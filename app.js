@@ -1,20 +1,28 @@
-var restify = require('restify');
-var mongoose = require('mongoose');
+const restify = require('restify');
+const core = require("./services/core-service");
 
-mongoose.connect('mongodb://heroku_s3d14v5p:b5hsgugp04lc5qcaco7dei0dph@ds127962.mlab.com:27962/heroku_s3d14v5p');
-var db = mongoose.connection;
 
-var server = restify.createServer();
-var User = require('./models/user');
+var api = restify.createServer();
+api.use(restify.acceptParser(api.acceptable));
+api.use(restify.queryParser());
+api.use(restify.bodyParser());
+api.use(restify.gzipResponse());
 
-server.get('/api/users', function(req, res, next){
-	User.retrieveUsers(function(err, user){
-		if(err){
-			return next(err);
-		}
-		res.send(user);
-		return next();
+core.mongoConnect();
+core.initCORS(api, restify);
+
+// process.env.PORT = 8080;
+
+api.listen(process.env.PORT, function(){
+	console.log("Server started at " + process.env.PORT);
+});
+
+module.exports.api = api;
+
+api.get("/", function(req, res){
+	res.send(200, {
+		msg: 'Welcome to AV Timelogs API'
 	});
 });
 
-server.listen(process.env.PORT || 8080);
+var adminUserRoutes = require('./endpoints/admin/_users/routes');
