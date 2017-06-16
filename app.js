@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/appventure');
+mongoose.connect('mongodb://heroku_s3d14v5p:b5hsgugp04lc5qcaco7dei0dph@ds127962.mlab.com:27962/heroku_s3d14v5p');
 var db = mongoose.connection;
 
 
