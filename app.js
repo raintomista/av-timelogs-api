@@ -1,66 +1,20 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
+var restify = require('restify');
 var mongoose = require('mongoose');
-
-app.use(bodyParser.json());
 
 mongoose.connect('mongodb://heroku_s3d14v5p:b5hsgugp04lc5qcaco7dei0dph@ds127962.mlab.com:27962/heroku_s3d14v5p');
 var db = mongoose.connection;
 
-
+var server = restify.createServer();
 var User = require('./models/user');
 
-app.post('/api/users', function(req, res){
-	var user = req.body;
-	User.createUser(user, function(err, user){
+server.get('/api/users', function(req, res, next){
+	User.retrieveUsers(function(err, user){
 		if(err){
-			throw err;
+			return next(err);
 		}
-		res.json(user);
-	});
-});	
-
-app.get('/api/users', function(req, res){
-	User.retrieveUsers(function(err, users){
-		if(err){
-			throw err;
-		}
-		res.json(users);
+		res.send(user);
+		return next();
 	});
 });
 
-app.get('/api/users/:_id', function(req, res){
-	User.retrieveUserById(req.params._id, function(err, user){
-		if(err){
-			throw err;
-		}
-		res.json(user);
-	});
-});
-
-app.put('/api/users/:_id', function(req, res){
-	var id = req.params._id;
-	var user = req.body;
-	User.updateUser(id, user, {}, function(err, user){
-		if(err){
-			throw err;
-		}
-		res.json(user);
-	});
-});
-
-app.delete('/api/users/:_id', function(req, res){
-	var id = req.params._id;
-	var user = req.body;
-	User.deleteUser(id, function(err, user){
-		if(err){
-			throw err;
-		}
-		res.json(user);
-	});
-});
-
-
-
-app.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 8080);
