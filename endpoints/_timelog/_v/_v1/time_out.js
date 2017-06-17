@@ -22,18 +22,19 @@ module.exports = function(req, res, next){
 
                     query = { username: req.params.username, timedIn: true };
                     User.findOneAndUpdate(query, {totalHours: total, timedIn: false}, function(err, result){
-                        if(result == null){
-                            res.send(400, {
-                                code: vars.CODE_BAD_REQUEST,
-                                msg: vars.CODE_BAD_REQUEST,
-                                err: err
-                            });
-                        }
-                        else if(!err){
-                            res.send(200, {
-                                code: vars.CODE_SUCCESS,
-                                msg: "Successfully timed out",
-                            });
+                        if(!err){
+                            if(result == null){
+                                res.send(400, {
+                                    code: vars.CODE_BAD_REQUEST,
+                                    msg: vars.CODE_BAD_REQUEST,
+                                });
+                            }
+                            else{
+                                res.send(200, {
+                                    code: vars.CODE_SUCCESS,
+                                    msg: "Successfully timed out",
+                                });
+                            }
                         }
                         else if(err){
                             res.send(500, {
