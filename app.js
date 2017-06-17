@@ -11,9 +11,8 @@ api.use(restify.gzipResponse());
 core.mongoConnect();
 core.initCORS(api, restify);
 
-// process.env.PORT = 8080;
 
-api.listen(process.env.PORT, function(){
+api.listen(process.env.PORT || 8080, function(){
 	console.log("Server started at " + process.env.PORT);
 });
 
@@ -26,3 +25,5 @@ api.get("/", function(req, res){
 });
 
 var adminUserRoutes = require('./endpoints/admin/_users/routes');
+var timeLogRoutes = require('./endpoints/_timelog/routes');
+

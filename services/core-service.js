@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 //mongoDB connect
 exports.mongoConnect = function(){ 
-    // process.env.MONGODB_URI = 'mongodb://localhost/appventure';
-    mongoose.connect(process.env.MONGODB_URI, function (err) {
+    var mongoURI = 'mongodb://localhost/appventure';
+
+    mongoose.connect(mongoURI, function (err) {
         if (err) {
             console.log(err);
         } else {
