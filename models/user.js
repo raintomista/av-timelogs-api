@@ -6,12 +6,8 @@ var userSchema = mongoose.Schema({
     name: {type: String},
     email: {type: String, required: true},
     contactNumber: {type: Number},
-    timeLogs: [{
-    	timeIn: Date,
-    	timeOut: Date
-    }],
     totalHours: {type: Number},
-    logged: {type: Boolean}
+    timedIn: {type: Boolean}
 });
 
 module.exports = mongoose.model('User', userSchema);
