@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
     email: {type: String, required: true},
     contactNumber: {type: Number},
     totalHours: {type: Number},
-    timedIn: {type: Boolean}
+    status: {type: Number}
 });
 
 module.exports = mongoose.model('User', userSchema);
