@@ -24,6 +24,10 @@ api.get("/", function(req, res){
 	});
 });
 
+var adminAuthRoutes = require('./endpoints/admin/_auth/routes');
+var adminAdminRoutes = require('./endpoints/admin/_admins/routes');
 var adminUserRoutes = require('./endpoints/admin/_users/routes');
+
+var userAuthRoutes = require('./endpoints/user/_auth/routes');
 var timeLogRoutes = require('./endpoints/_timelog/routes');
 

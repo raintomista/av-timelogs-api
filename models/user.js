@@ -7,7 +7,8 @@ var userSchema = mongoose.Schema({
     email: {type: String, required: true},
     contactNumber: {type: Number},
     totalHours: {type: Number},
-    status: {type: Number}
+    status: {type: Number},
+    imgUrl: {type: String}
 });
 
 module.exports = mongoose.model('User', userSchema);

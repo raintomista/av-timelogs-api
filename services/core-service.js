@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+
+var API_KEY = "aPi_aVtImeL0gs2o17";
 
 //mongoDB connect
 exports.mongoConnect = function(){ 
     var mongoURI = process.env.MONGODB_URI;
-    // mongoURI = 'mongodb://localhost/appventure';
+    mongoURI = 'mongodb://heroku_s3d14v5p:b5hsgugp04lc5qcaco7dei0dph@ds127962.mlab.com:27962/heroku_s3d14v5p';
 
     mongoose.connect(mongoURI, function (err) {
         if (err) {
@@ -42,4 +45,38 @@ function _unknownMethodHandler(restify, req, res) {
   else
     return res.send(new restify.MethodNotAllowedError("Invalid Method"));
 }
+
+//Tokenization
+module.exports.generateAppAccessToken = function(payload, callback){
+    jwt.sign(payload, API_KEY, {expiresIn : '365d'}, function(err, token){
+        if(!err){
+            callback(null, token);
+        }
+        else{
+            callback(err, null);
+        }
+    });
+};
+
+module.exports.verifytoken = function(req,res,next){
+    var token = req.headers['access-token'];
+    var userdetails = {
+        username: req.params.username,
+        password: req.params.password}
+    
+    if(token){
+            jwt.verify(token, API_KEY, function(err, decoded) {
+                // jwt.decode(token);
+            if(!err){
+                 req.token_info = decoded;
+                 return next();
+            } else {
+                res.send(500, {code: 'ServerError', message: 'Something went wrong!', error: err});
+            }
+        });
+    } else {
+        res.send(401, {code: 'Unauthorized', message: "No app token."});
+
+    }
+};
 
