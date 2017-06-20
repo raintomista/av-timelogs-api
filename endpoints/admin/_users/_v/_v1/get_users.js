@@ -6,7 +6,7 @@ const User = require('../../../../../models/user');
 module.exports = function(req, res, next){
     User.find({}, function(err, result){
         if(!err){
-            if(result.length > 0){
+            if(result){
                 res.send(200, {
                     code: vars.CODE_SUCCESS,
                     msg: "Successfully fetched",
