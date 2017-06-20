@@ -7,6 +7,7 @@ var API_KEY = "aPi_aVtImeL0gs2o17";
 exports.mongoConnect = function(){ 
     var mongoURI = process.env.MONGODB_URI;
     mongoURI = 'mongodb://heroku_s3d14v5p:b5hsgugp04lc5qcaco7dei0dph@ds127962.mlab.com:27962/heroku_s3d14v5p';
+    // mongoURI = 'mongodb://localhost/appventure';
 
     mongoose.connect(mongoURI, function (err) {
         if (err) {
@@ -59,7 +60,7 @@ module.exports.generateAppAccessToken = function(payload, callback){
 };
 
 module.exports.verifytoken = function(req,res,next){
-    var token = req.headers['access-token'];
+    var token = req.headers['x-access-token'];
     var userdetails = {
         username: req.params.username,
         password: req.params.password}
