@@ -8,7 +8,7 @@ const saltRounds = 10;
 var salt = bcrypt.genSaltSync(saltRounds);
 
 module.exports = function(req,res,next){
-    cloudinary.upload(req.params.data.imgUrl, function(err, imgURL){
+    cloudinary.upload(req.params.data.imgUrl, function(result){
      var data = {
                 username: req.params.data.username,
                 password: bcrypt.hashSync(req.params.data.password,salt),
@@ -17,7 +17,7 @@ module.exports = function(req,res,next){
                 contactNumber: req.params.data.contactNumber,
                 totalHours: req.params.data.totalHours,
                 status: req.params.data.status,
-                imgUrl: imgURL.url
+                imgUrl: result.url
             };
     
         //Username and Email Availability
