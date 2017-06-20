@@ -17,7 +17,7 @@ module.exports = function(req,res,next){
                 contactNumber: req.params.data.contactNumber,
                 totalHours: req.params.data.totalHours,
                 status: req.params.data.status,
-                imgUrl: imgURL
+                imgUrl: imgURL.url
             };
     
         //Username and Email Availability
