@@ -1,26 +1,36 @@
 const mongoose = require('mongoose');
 const vars = require('../../../../vars');
 const Timelog = require('../../../../models/timelog');
+const User = require('../../../../models/user');
 
 module.exports = function(req, res, next){
-    const query = {username: req.params.username};
-
-    console.log(req.params.username);
-
-    Timelog.find(query, function(err, result){
+    
+    //Search Username 
+    User.findOne({username: req.params.username}, function(err, user){
         if(!err){
-            res.send(200, {
-                code: vars.CODE_SUCCESS,
-                msg: "Successfully fetched",
-                data: result
+            Timelog.findOne({_user: user._id})
+            .populate('_user') 
+            .exec(function(err, result){
+                if(!err){
+                    res.send(200,{
+                        code: vars.CODE_SUCCESS,
+                        msg: "Fetched data",
+                        data: result
+                    });
+                } else {
+                     res.send(500,{
+                        code: vars.CODE_AUTH_ERROR,
+                        msg: vars.MSG_AUTH_ERROR,
+                        err: err
+                    });
+                }
+            })
+        } else {
+            res.send(500,{
+                code: vars.CODE_AUTH_ERROR,
+                msg: vars.MSG_AUTH_ERROR,
+                err: err
             });
         }
-        else{
-            res.send(500, {
-                code: vars.CODE_SERVER_ERROR,
-                msg: vars.CODE_SERVER_ERROR,
-                err: err
-            })
-        }
-    });
+    })
 }

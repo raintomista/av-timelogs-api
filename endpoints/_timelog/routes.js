@@ -12,3 +12,4 @@ api.post({path: '/time-out'}, core.verifytoken, time_out_v1);
 api.get({path: '/timelogs/all'}, core.verifytoken, view_all_timelogs_v1);
 api.get({path: '/timelogs/user/:username'}, core.verifytoken, view_all_timelogs_by_user_v1);
 api.get({path: '/timelogs/date/:date'}, core.verifytoken, view_all_timelogs_by_date_v1);
+api.get({path: '/timelogs/date/:date'}, core.verifytoken, view_all_timelogs_by_date_v1);
