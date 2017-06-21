@@ -33,67 +33,86 @@ function getDiff(start, end) {
 
 module.exports = function (req, res, next) {
     const timestamp = moment().toDate();
-    Timelog.findOne(
-        { username: req.params.username, timeOut: null}, {},
-        { new: false, sort: { timeIn: -1} },
-        function(err, result){
-            if(!err){
-                Timelog.update(
-                    { _id: result._id },
-                    { timeOut: timestamp, totalHrs: getDiff(result.timeIn, timestamp)},
-                    function(err){
-                        if(!err){
-                            Timelog.find(
-                                {username: req.params.username},
-                                function(err, results){
-                                    if(!err){
-                                        User.update(
-                                            { username: results[0].username },
-                                            { status: 0, totalHours: getTotalWorkingHours(results) },
-                                            function(err, r){
-                                                if(!err){
-                                                    res.send(200, {
-                                                        code: vars.CODE_SUCCESS,
-                                                        msg: "Successfully timed out",
-                                                    });
-                                                }
-                                                else{
-                                                    res.send(500, {
-                                                        code: vars.CODE_SERVER_ERROR,
-                                                        msg: vars.CODE_SERVER_ERROR,
-                                                        err: err
-                                                    });
-                                                }
+
+    // Check if the username exists in the user db
+    User.findOne({ username: req.params.username }, function(err, user){
+        if(!err){
+            // Find the latest timelog of the user
+            Timelog.findOne(
+                { _user: user._id}, {},
+                { new: false, sort: { timeIn: -1} },
+                function(err, result){
+                    if(!err){
+                        // Update the timeOut and totalHrs of the latest timelog of the user
+                        Timelog.update(
+                            { _id: result._id },
+                            { timeOut: timestamp, totalHrs: getDiff(result.timeIn, timestamp)},
+                            function(err){
+                                if(!err){
+                                    // Get all timelogs of the user for the computation of total working hours
+                                    Timelog
+                                        .find({ _user: user._id})
+                                        .populate('_user')
+                                        .exec(function(err, results){
+                                            if(!err){
+
+                                                // Update the status and totalHours of the user
+                                                User.update(
+                                                    { username: results[0]._user.username },
+                                                    { status: 0, totalHours: getTotalWorkingHours(results) },
+                                                    function(err, r){
+                                                        if(!err){
+                                                            res.send(200, {
+                                                                code: vars.CODE_SUCCESS,
+                                                                msg: "Successfully timed out",
+                                                            });
+                                                        }
+                                                        else{
+                                                            res.send(500, {
+                                                                code: vars.CODE_SERVER_ERROR,
+                                                                msg: vars.CODE_SERVER_ERROR,
+                                                                err: err
+                                                            });
+                                                        }
+                                                    }
+                                                );
                                             }
-                                        );
-                                    }
-                                    else{
-                                        res.send(500, {
-                                            code: vars.CODE_SERVER_ERROR,
-                                            msg: vars.CODE_SERVER_ERROR,
-                                            err: err
-                                        });
-                                    }
+                                            else{
+                                                res.send(500, {
+                                                    code: vars.CODE_SERVER_ERROR,
+                                                    msg: vars.CODE_SERVER_ERROR,
+                                                    err: err
+                                                });
+                                            }
+                                        }
+                                    );
                                 }
-                            );
-                        }
-                        else{
-                            res.send(500, {
-                                code: vars.CODE_SERVER_ERROR,
-                                msg: vars.CODE_SERVER_ERROR,
-                                err: err
-                            });
-                        }
-                    } 
-                );
-            }
-            else{
-                res.send(500, {
-                    code: vars.CODE_SERVER_ERROR,
-                    msg: vars.CODE_SERVER_ERROR,
-                    err: err
-                });
-            }
+                                else{
+                                    res.send(500, {
+                                        code: vars.CODE_SERVER_ERROR,
+                                        msg: vars.CODE_SERVER_ERROR,
+                                        err: err
+                                    });
+                                }
+                            } 
+                        );
+                    }
+                    else{
+                        res.send(500, {
+                            code: vars.CODE_SERVER_ERROR,
+                            msg: vars.CODE_SERVER_ERROR,
+                            err: err
+                        });
+                    }
+                }
+            );
         }
-    );
+        else{
+            res.send(500, {
+                code: vars.CODE_SERVER_ERROR,
+                msg: vars.CODE_SERVER_ERROR,
+                err: err
+            });
+        }
+    });
 }
