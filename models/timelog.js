@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 var timeLogSchema = mongoose.Schema({
-    username: {type: String},
+    _user: { type: Schema.ObjectId, ref: 'User'},
     timeIn: Date,
     timeOut: Date,
     lateHrs: String,
