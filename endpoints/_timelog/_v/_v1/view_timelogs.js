@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const vars = require('../../../../vars');
 const Timelog = require('../../../../models/timelog');
+const User = require('../../../../models/user');
+
 
 module.exports = function(req, res, next){
-    Timelog.find()
-        .populate('_user')
+    User.find()
+        .populate('_timelog')
         .exec(function(err, results){
             if(!err){
                 res.send(200, {
