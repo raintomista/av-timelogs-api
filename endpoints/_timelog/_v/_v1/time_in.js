@@ -5,15 +5,14 @@ const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
 
-const office_start = moment().startOf('day').add(9, 'hours').toDate();
-const late = moment().startOf('day').add(10, 'hours').add(1, 'minutes').toDate();
+const office_start = moment().startOf('day').add(9, 'hours');
+const late = moment().startOf('day').add(10, 'hours').add(1, 'minutes');
 
 
 
 module.exports = function (req, res, next) {
-    const time_in = moment().toDate();
+    const time_in = moment().utcOffset('+08:00');
     const late_hours = moment(time_in).isBetween(office_start, late) ? null : moment.utc(moment(time_in).diff(late)).format("HH:mm:ss");
-
 
     User.findOne({username: req.params.username}, function(err, user){
         console.log(user);
@@ -28,32 +27,40 @@ module.exports = function (req, res, next) {
 
             let newTimelog = new Timelog(newObject);
 
-            newTimelog.save(function (err, timelog) {
-                if (!err) {
-                    let query = { username: req.params.username }
-                    let update = { status: 1 }
-                    User.update(query, update, function (err) {
-                        if (!err) {
-                            res.send(200, {
-                                code: vars.CODE_SUCCESS,
-                                msg: vars.CODE_SUCCESS
-                            });
-                        } else {
-                            res.send(500, {
-                                code: vars.CODE_SERVER_ERROR,
-                                msg: vars.CODE_SERVER_ERROR
-                            });
-                        }
-                    });
+            if(user.status !== 1){
+                newTimelog.save(function (err, timelog) {
+                    if (!err) {
+                        let query = { username: req.params.username }
+                        let update = { status: 1 }
+                        User.update(query, update, function (err) {
+                            if (!err) {
+                                res.send(200, {
+                                    code: vars.CODE_SUCCESS,
+                                    msg: vars.CODE_SUCCESS
+                                });
+                            } else {
+                                res.send(500, {
+                                    code: vars.CODE_SERVER_ERROR,
+                                    msg: vars.CODE_SERVER_ERROR
+                                });
+                            }
+                        });
 
-                } else {
-                    res.send(500, {
-                        code: vars.CODE_SERVER_ERROR,
-                        msg: vars.CODE_SERVER_ERROR,
-                        err: err
-                    });
-                }
-            });
+                    } else {
+                        res.send(500, {
+                            code: vars.CODE_SERVER_ERROR,
+                            msg: vars.CODE_SERVER_ERROR,
+                            err: err
+                        });
+                    }
+                });
+            }
+            else{
+                res.send(200, {
+                    code: vars.CODE_SUCCESS,
+                    msg: `${user.name} + has already timed in`
+                });
+            }
         }
         else{
             res.send(500, {
