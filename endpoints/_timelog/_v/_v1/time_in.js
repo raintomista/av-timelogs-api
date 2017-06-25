@@ -16,6 +16,7 @@ module.exports = function (req, res, next) {
 
 
     User.findOne({username: req.params.username}, function(err, user){
+        console.log(user);
         if(!err){
             let newObject = {
                 _user: user._id,
