@@ -5,8 +5,8 @@ const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
 
-const office_start = moment().startOf('day').add(9, 'hours');
-const late = moment().startOf('day').add(10, 'hours').add(1, 'minutes');
+const office_start = moment().startOf('day').add(1, 'hours'); //UTC +8
+const late = moment().startOf('day').add(2, 'hours').add(1, 'minutes'); //UTC +8
 
 
 module.exports = function (req, res, next) {
