@@ -31,7 +31,7 @@ module.exports = function (req, res, next) {
                 newTimelog.save(function (err, timelog) {
                     if (!err) {
                         let query = { username: req.params.username }
-                        let update = { status: 1 }
+                        let update = { status: 1, _timelog: timelog._id }
                         User.update(query, update, function (err) {
                             if (!err) {
                                 res.send(200, {

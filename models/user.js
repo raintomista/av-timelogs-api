@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 var userSchema = mongoose.Schema({
     username: {type: String, required: true},
@@ -8,7 +9,8 @@ var userSchema = mongoose.Schema({
     contactNumber: {type: Number},
     totalHours: {type: String},
     status: {type: Number},
-    imgUrl: {type: String}
+    imgUrl: {type: String},
+    _timelog: { type: Schema.ObjectId, ref: 'Timelog'}
 });
 
 module.exports = mongoose.model('User', userSchema);

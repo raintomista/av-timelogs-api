@@ -17,7 +17,8 @@ module.exports = function(req,res,next){
                 contactNumber: req.params.data.contactNumber,
                 totalHours: req.params.data.totalHours,
                 status: req.params.data.status,
-                imgUrl: result.url
+                imgUrl: result.url,
+                _timelog: null
             };
     
         //Username and Email Availability
@@ -35,7 +36,8 @@ module.exports = function(req,res,next){
                         contactNumber: Number(data.contactNumber),
                         totalHours: Number(data.totalHours),
                         status: Number(data.status),
-                        imgUrl: data.imgUrl
+                        imgUrl: data.imgUrl,
+                        _timelog: null
                     }
                 });
             }
