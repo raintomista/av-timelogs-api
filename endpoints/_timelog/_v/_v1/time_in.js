@@ -5,8 +5,8 @@ const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
 
-const office_start = moment().startOf('day').add(9, 'hours');
-const late = moment().startOf('day').add(10, 'hours').add(1, 'minutes');
+const office_start = moment().startOf('day').add(9, 'hours').utcOffset('+08:00');
+const late = moment().startOf('day').add(10, 'hours').add(1, 'minutes').utcOffset('+08:00');
 
 
 
