@@ -8,7 +8,7 @@ module.exports = function(req, res, next){
     //Search Username 
     User.findOne({username: req.params.username}, function(err, user){
         if(!err){
-            Timelog.find({_user: user._id})
+            Timelog.find({_user: user._id}, {}, {sort: { timeIn: 1}})
             .populate('_user') 
             .exec(function(err, result){
                 if(!err){
