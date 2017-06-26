@@ -27,18 +27,19 @@ module.exports = function(req,res,next){
             if(results.length > 0){
                 res.send(400,{code: vars.CODE_BAD_REQUEST , message:"Username/Email already exists"});
             } else {
-                User.create(data);
-                res.send(200,{code: vars.CODE_SUCCESS, message:"User has been created",
-                    data:{
-                        username: data.username,
-                        name: data.name,
-                        email: data.email,
-                        contactNumber: data.contactNumber,
-                        totalHours: null,
-                        status: 0,
-                        imgUrl: data.imgUrl,
-                        _timelog: null
-                    }
+                User.create(data, function(){
+                    res.send(200,{code: vars.CODE_SUCCESS, message:"User has been created",
+                        data:{
+                            username: data.username,
+                            name: data.name,
+                            email: data.email,
+                            contactNumber: data.contactNumber,
+                            totalHours: null,
+                            status: 0,
+                            imgUrl: data.imgUrl,
+                            _timelog: null
+                        }
+                    });
                 });
             }
         } else {
