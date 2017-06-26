@@ -33,9 +33,9 @@ module.exports = function(req,res,next){
                             username: data.username,
                             name: data.name,
                             email: data.email,
-                            contactNumber: data.contactNumber,
-                            totalHours: null,
-                            status: 0,
+                            contactNumber: Number(data.contactNumber),
+                            totalHours: Number(data.totalHours),
+                            status: Number(data.status),
                             imgUrl: data.imgUrl,
                             _timelog: null
                         }
