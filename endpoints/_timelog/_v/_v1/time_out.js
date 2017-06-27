@@ -28,7 +28,8 @@ function getTotalWorkingHours(timelogs) {
 }
 
 function getDiff(start, end) {
-    return moment.utc(moment(end).diff(start)).format("HH:mm:ss");
+    let total = moment.utc(moment(end).diff(start, 'milliseconds'));
+    return getHours(total);
 }
 
 module.exports = function (req, res, next) {
