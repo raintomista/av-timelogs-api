@@ -28,7 +28,7 @@ function getTotalWorkingHours(timelogs) {
 }
 
 function getDiff(start, end) {
-    let total = moment.utc(moment(end).diff(start, 'milliseconds'));
+    let total = moment(moment(end).diff(start, 'milliseconds'));
     return getHours(total);
 }
 
