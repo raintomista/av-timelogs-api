@@ -15,8 +15,8 @@ module.exports = function(req,res,next){
                 name: req.params.data.name,
                 email: req.params.data.email,
                 contactNumber: req.params.data.contactNumber,
-                totalHours: req.params.data.totalHours,
-                status: req.params.data.status,
+                totalHours: null,
+                status: 0,
                 imgUrl: req.params.data.imgUrl,
                 _timelog: null
             };
@@ -28,18 +28,11 @@ module.exports = function(req,res,next){
             if(results.length > 0){
                 res.send(400,{code: vars.CODE_BAD_REQUEST , message:"Username/Email already exists"});
             } else {
-                User.create(data, function(){
-                    res.send(200,{code: vars.CODE_SUCCESS, message:"User has been created",
-                        data:{
-                            username: data.username,
-                            name: data.name,
-                            email: data.email,
-                            contactNumber: data.contactNumber,
-                            totalHours: data.totalHours,
-                            status: Number(data.status),
-                            imgUrl: data.imgUrl,
-                            _timelog: null
-                        }
+                User.create(data, function(test){
+                    res.send(200, {
+                        code: vars.CODE_SUCCESS, 
+                        message:"User has been created",
+                        data: data
                     });
                 });
             }
