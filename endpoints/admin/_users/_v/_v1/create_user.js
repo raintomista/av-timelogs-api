@@ -20,6 +20,7 @@ module.exports = function(req,res,next){
                 imgUrl: result.url,
                 _timelog: null
             };
+
     
         //Username and Email Availability
     User.find({$or: [{username: req.params.data.username},{email: req.params.data.email}]}).exec(function(err,results){
