@@ -8,7 +8,7 @@ const saltRounds = 10;
 var salt = bcrypt.genSaltSync(saltRounds);
 
 module.exports = function(req,res,next){
-    cloudinary.upload(req.params.data.imgUrl, function(result){
+    // cloudinary.upload(req.params.data.imgUrl, function(result){
      var data = {
                 username: req.params.data.username,
                 password: bcrypt.hashSync(req.params.data.password,salt),
@@ -17,7 +17,7 @@ module.exports = function(req,res,next){
                 contactNumber: req.params.data.contactNumber,
                 totalHours: req.params.data.totalHours,
                 status: req.params.data.status,
-                imgUrl: result.url,
+                imgUrl: req.params.data.imgUrl,
                 _timelog: null
             };
 
@@ -34,8 +34,8 @@ module.exports = function(req,res,next){
                             username: data.username,
                             name: data.name,
                             email: data.email,
-                            contactNumber: Number(data.contactNumber),
-                            totalHours: Number(data.totalHours),
+                            contactNumber: data.contactNumber,
+                            totalHours: data.totalHours,
                             status: Number(data.status),
                             imgUrl: data.imgUrl,
                             _timelog: null
@@ -47,5 +47,5 @@ module.exports = function(req,res,next){
             res.send(500,{code: "Error", message: vars.MSG_SERVER_ERROR});
         }  
      })
-  })
+//   })
 };
