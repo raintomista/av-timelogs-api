@@ -26,7 +26,8 @@ module.exports = function(req,res,next){
                             totalHours: user.totalHours,
                             status: user.status,
                             imgUrl: user.imgUrl,
-                            token: token
+                            token: token,
+                            isAdmin: user.isAdmin
                             }
                     }); 
                 });           
