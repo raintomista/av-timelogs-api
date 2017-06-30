@@ -2,7 +2,7 @@ const api = module.parent.exports.api;
 const core = require('../../../services/core-service');
 
 const get_networks_v1 = require('./_v/_v1/get_networks');
-const get_network_status_v1 = require('./_v/_v1/get_networks');
+const get_network_status_v1 = require('./_v/_v1/get_network_status');
 const add_network_v1 = require('./_v/_v1/add_network');
 const remove_valid_v1 = require('./_v/_v1/remove_valid');
 const set_valid_v1 = require('./_v/_v1/set_valid');
