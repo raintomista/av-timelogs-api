@@ -3,7 +3,7 @@ const vars = require('../../../../../vars');
 const Network = require('../../../../../models/network');
 
 module.exports = function(req, res, next){
-    Network.find({ip_address: req.params.ip}, function(err, result){
+    Network.findOne({ip_address: req.params.ip}, function(err, result){
         if(!err){
             res.send(200, {
                 code: vars.CODE_SUCCESS,
