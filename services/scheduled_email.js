@@ -26,8 +26,8 @@ timeInAlert = function(currentTime){
 endOfTheDayAlert = function(currentTime){
     const start = moment().startOf('day').add(9, 'hours');
     const end = moment().startOf('day').add(19, 'hours');
-    const endOfTheDay = moment().startOf('day').add(19, 'hours').utcOffset('+08:00');
-    console.log(`${endOfTheDay.format('HH:mm:ss')} ${currentTime.format('HH:mm:ss')} -- END OF THE DAY ALERT ${end.format('HH:mm:ss') === currentTime.format('HH:mm:ss')}`);
+    const endOfTheDay = moment().startOf('day').add(19, 'hours');
+    console.log(`${endOfTheDay.format('HH:mm:ss')} ${currentTime.format('HH:mm:ss')} -- END OF THE DAY ALERT ${endOfTheDay.format('HH:mm:ss') === currentTime.format('HH:mm:ss')}`);
 
     if(end.format('HH:mm:ss') === currentTime.format('HH:mm:ss')){
         User.find()
