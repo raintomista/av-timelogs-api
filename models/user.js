@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
     status: {type: Number},
     imgUrl: {type: String},
     _timelog: { type: Schema.ObjectId, ref: 'Timelog'},
-    isAdmin: boolean
+    isAdmin: Boolean
 });
 
 module.exports = mongoose.model('User', userSchema);
