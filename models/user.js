@@ -10,7 +10,8 @@ var userSchema = mongoose.Schema({
     totalHours: {type: String},
     status: {type: Number},
     imgUrl: {type: String},
-    _timelog: { type: Schema.ObjectId, ref: 'Timelog'}
+    _timelog: { type: Schema.ObjectId, ref: 'Timelog'},
+    isAdmin: boolean
 });
 
 module.exports = mongoose.model('User', userSchema);
