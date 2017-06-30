@@ -14,7 +14,7 @@ setInterval(function(){
 
 // Alerts
 timeInAlert = function(currentTime){
-    const noonTime = moment().startOf('day').add(12, 'hours').utcOffset('+08:00');
+    const noonTime = moment().startOf('day').add(12, 'hours');
     console.log(`${noonTime.format('HH:mm:ss')} ${currentTime.format('HH:mm:ss')} -- TIME IN ${noonTime.format('HH:mm:ss') === currentTime.format('HH:mm:ss')}`);
     if(noonTime.format('HH:mm:ss') === currentTime.format('HH:mm:ss')){
         User.find({status: 0}, {email: 1, name: 1}, function(err, results){
@@ -24,8 +24,8 @@ timeInAlert = function(currentTime){
 }
 
 endOfTheDayAlert = function(currentTime){
-    const start = moment().startOf('day').add(9, 'hours').utcOffset('08:00');
-    const end = moment().startOf('day').add(19, 'hours').utcOffset('08:00');
+    const start = moment().startOf('day').add(9, 'hours');
+    const end = moment().startOf('day').add(19, 'hours');
     const endOfTheDay = moment().startOf('day').add(19, 'hours').utcOffset('+08:00');
     console.log(`${endOfTheDay.format('HH:mm:ss')} ${currentTime.format('HH:mm:ss')} -- END OF THE DAY ALERT ${end.format('HH:mm:ss') === currentTime.format('HH:mm:ss')}`);
 
