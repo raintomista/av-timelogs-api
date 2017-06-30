@@ -76,6 +76,33 @@ module.exports.emailWithList = function(absentees){
     sendEmail(mail);
 }
 
+module.exports.emailTimeInOutAlert = function(name, verb, time){
+    let bccRecipients = [];
+    let mail = new helper.Mail();
+    let TEMPLATE_ID = '78bf13b6-a414-435f-b761-8427f3a00dbb';
+
+    // Set Email Sender 
+    let fromEmail = new helper.Email('no-reply@app-venture.co');
+    mail.setFrom(fromEmail);
+
+    // Personalize Email
+    let personalization = new helper.Personalization();
+    personalization.setSubject(`${name} has ${verb} at ${time}`)
+    personalization.addTo(new helper.Email('rstomista@up.edu.ph', 'Admin')); //Set Email Receiver
+    personalization.addSubstitution(new helper.Substitution("%name%", name));
+    personalization.addSubstitution(new helper.Substitution("%verb%", verb));
+    personalization.addSubstitution(new helper.Substitution("%time%", time));    
+    personalization.addSubstitution(new helper.Substitution("%button_url%", `${BASE_URL}`));
+    mail.addPersonalization(personalization);
+
+
+    //Set Email Template
+    mail.setTemplateId(TEMPLATE_ID); 
+    
+    // Send Email
+    sendEmail(mail);
+}
+
 sendEmail = function(mail){
     let sendgrid = require('sendgrid')(SENDGRID_API_KEY);
     let request = sendgrid.emptyRequest({

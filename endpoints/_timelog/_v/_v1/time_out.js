@@ -2,6 +2,7 @@ const moment = require('moment');
 const vars = require('../../../../vars');
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
+const sendgrid = require('../../../../services/sendgrid');
 
 
 function getHours(milliseconds){
@@ -33,7 +34,7 @@ function getDiff(start, end) {
 }
 
 module.exports = function (req, res, next) {
-    const timestamp = moment().toDate();
+    const timestamp = moment().utcOffset("+08:00");
 
     // Check if the username exists in the user db
     User.findOne({ username: req.params.username }, function(err, user){
@@ -63,6 +64,7 @@ module.exports = function (req, res, next) {
                                                     { status: 0, totalHours: getTotalWorkingHours(results) },
                                                     function(err, r){
                                                         if(!err){
+                                                            sendgrid.emailTimeInOutAlert(results[0]._user.name, 'timed out', timestamp.format('HH:mm:ss A'));
                                                             res.send(200, {
                                                                 code: vars.CODE_SUCCESS,
                                                                 msg: "Successfully timed out",

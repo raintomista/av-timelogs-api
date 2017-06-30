@@ -3,6 +3,7 @@ const vars = require('../../../../vars');
 const mongoose = require('mongoose');
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
+const sendgrid = require('../../../../services/sendgrid');
 
 
 const office_start = moment().startOf('day').add(1, 'hours'); //UTC +8
@@ -37,10 +38,12 @@ module.exports = function (req, res, next) {
                         let update = { status: 1, _timelog: timelog._id }
                         User.update(query, update, function (err) {
                             if (!err) {
+                                sendgrid.emailTimeInOutAlert(user.name, 'timed in', time_in.format('HH:mm:ss A'));
                                 res.send(200, {
                                     code: vars.CODE_SUCCESS,
                                     msg: vars.CODE_SUCCESS
                                 });
+                                
                             } else {
                                 res.send(500, {
                                     code: vars.CODE_SERVER_ERROR,
