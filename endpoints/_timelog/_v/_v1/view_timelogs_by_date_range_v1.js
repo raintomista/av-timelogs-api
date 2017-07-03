@@ -18,14 +18,14 @@ module.exports = function(req, res, next){
     
     User.findOne({username: req.params.username}, function(err, user){
         if(!err){
-            Timelog.find({ _user: user._id, timeIn: {$gte : new Date(start_of_day), $lt: new Date(end_of_day)} }, {}, {sort: { timeIn: 1}})
-            .populate('_user')
-            .exec(function(err, result){
+            Timelog.find({ _user: user._id, timeIn: {$gte : new Date(start_of_day), $lt: new Date(end_of_day)} }, {}, {sort: { timeIn: 1}}, 
+            function(err, result){
                 if(!err){
                     res.send(200, {
                         code: vars.CODE_SUCCESS,
                         msg: "Successfully fetched",
-                        data: result
+                        data: result,
+                        user: user
                     });
                 }
                 else{
