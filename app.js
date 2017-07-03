@@ -33,6 +33,8 @@ var adminAdminRoutes = require('./endpoints/admin/_admins/routes');
 var adminUserRoutes = require('./endpoints/admin/_users/routes');
 var userAuthRoutes = require('./endpoints/user/_auth/routes');
 var timeLogRoutes = require('./endpoints/_timelog/routes');
+var mailerRoutes = require('./endpoints/_mailer/routes');
+
 
 
 

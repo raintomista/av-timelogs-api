@@ -4,12 +4,12 @@ const User = require('../models/user');
 const sendgrid = require('./sendgrid');
 
 
-setInterval(function(){
-    const currentTime = moment().utcOffset('+08:00');
-    timeInAlert(currentTime);
-    endOfTheDayAlert(currentTime);
+// setInterval(function(){
+//     const currentTime = moment().utcOffset('+08:00');
+//     timeInAlert(currentTime);
+//     endOfTheDayAlert(currentTime);
 
-}, 1000, true);
+// }, 1000, true);
 
 
 // Alerts
