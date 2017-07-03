@@ -8,14 +8,13 @@ module.exports = function(req, res, next){
     //Search Username 
     User.findOne({username: req.params.username}, function(err, user){
         if(!err){
-            Timelog.find({_user: user._id}, {}, {sort: { timeIn: 1}})
-            .populate('_user') 
-            .exec(function(err, result){
+            Timelog.find({_user: user._id}, {password: -1}, {sort: { timeIn: 1}}, function(err, result){
                 if(!err){
                     res.send(200,{
                         code: vars.CODE_SUCCESS,
                         msg: "Fetched data",
-                        data: result
+                        data: result,
+                        user: user
                     });
                 } else {
                      res.send(500,{
