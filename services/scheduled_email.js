@@ -5,17 +5,17 @@ const sendgrid = require('./sendgrid');
 const cron = require('node-schedule');
 
 
-cron.scheduleJob({hour: 12, minute: 00, dayOfWeek: [1,2,3,4,5]}, function(){
+cron.scheduleJob({hour: 3, minute: 00, dayOfWeek: [1,2,3,4,5]}, function(){
     console.log('NOON MAILER');
     timeInAlert();
 });
 
-cron.scheduleJob({hour: 19, minute: 00, dayOfWeek: [1,2,3,4,5]}, function(){
+cron.scheduleJob({hour: 11, minute: 00, dayOfWeek: [1,2,3,4,5]}, function(){
     console.log('NIGHT MAILER');
     endOfTheDayAlert();
 });
 
-cron.scheduleJob({hour: 2}, function(){
+cron.scheduleJob({hour: 18}, function(){
     console.log('Test2');
 });
 
