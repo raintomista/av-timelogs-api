@@ -11,10 +11,13 @@ module.exports = function(req,res,next){
     User.findOne({username: req.params.data.username}, function(err, user){
         if(!err){
             let newData = {};
-            newData.username = req.params.data.newUsername;
             newData.name = req.params.data.name;
             newData.email = req.params.data.email;
             newData.contactNumber = req.params.data.contactNumber;
+            if(req.params.data.newUsername !== null){
+                console.log("new username");
+                newData.username = req.params.data.newUsername;
+            }
             if(req.params.data.password !== null){
                 console.log("new pass");
                 newData.password = bcrypt.hashSync(req.params.data.password, salt);
