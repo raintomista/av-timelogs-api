@@ -11,7 +11,7 @@ module.exports = function(req,res,next){
     User.findOne({username: req.params.data.username}, function(err, user){
         if(!err){
             let newData = {};
-            newData.username = req.params.data.username;
+            newData.username = req.params.data.newUsername;
             newData.name = req.params.data.name;
             newData.email = req.params.data.email;
             newData.contactNumber = req.params.data.contactNumber;
