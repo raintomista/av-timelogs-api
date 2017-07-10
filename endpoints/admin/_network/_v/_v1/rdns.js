@@ -6,8 +6,8 @@ module.exports = function(req, res, next){
         if(!err){
             res.send(200, {
                 code: vars.CODE_SUCCESS,
-                msg: "Successfully fetched hostname",
-                data: hostname
+                msg: `Successful Reverse DNS Lookup of ${req.params.ip}`,
+                data: hostname[0]
             });
         }
         else{
