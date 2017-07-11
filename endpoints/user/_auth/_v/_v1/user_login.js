@@ -15,6 +15,7 @@ module.exports = function(req,res,next){
         if(user){
             if(bcrypt.compareSync(password, user.get('password'))){
                 core.generateAppAccessToken(user, function(err,token){
+                    console.log(err);
                     if(!err){
                         res.send(200,{code: vars.CODE_SUCCESS, 
                             message: "Welcome " + user.first_name + "!",
