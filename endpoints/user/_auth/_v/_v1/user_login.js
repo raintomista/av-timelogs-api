@@ -28,8 +28,9 @@ module.exports = function(req,res,next){
                                 status: user.status,
                                 imgUrl: user.imgUrl,
                                 token: token,
-                                isAdmin: user.isAdmin
-                                }
+                                isAdmin: user.isAdmin,
+                                isSuspended: user.isSuspended
+                            }
                         }); 
                     }
                     else{

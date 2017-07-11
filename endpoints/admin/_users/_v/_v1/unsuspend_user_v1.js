@@ -4,7 +4,7 @@ const User = require('../../../../../models/user');
 
 
 module.exports = function(req, res, next){
-    User.findOneAndUpdate({ username: req.params.username }, { status: 0 }, function(err){
+    User.findOneAndUpdate({ username: req.params.username }, { isSuspended: false }, function(err){
         if(!err){
         console.log(err);
             

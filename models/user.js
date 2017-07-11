@@ -9,6 +9,7 @@ var userSchema = mongoose.Schema({
     contactNumber: {type: String},
     totalHours: {type: String},
     status: {type: Number},
+    isSuspended: {type: Number},
     imgUrl: {type: String},
     _timelog: { type: Schema.ObjectId, ref: 'Timelog'},
     isAdmin: Boolean
