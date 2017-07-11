@@ -20,7 +20,8 @@ module.exports = function(req,res,next){
                 totalHours: null,
                 status: 0,
                 imgUrl: result.secure_url,
-                _timelog: null
+                _timelog: null,
+                isSuspended: false,
             };
 
     
@@ -39,7 +40,7 @@ module.exports = function(req,res,next){
                         code: vars.CODE_SUCCESS, 
                         message:"User has been created",
                         data: data
-                    });
+                    }); 
                 });
             }
         } else {
