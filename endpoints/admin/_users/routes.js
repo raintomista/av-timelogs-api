@@ -16,7 +16,7 @@ api.get({path: '/users/:username'}, core.verifytoken, get_user_by_username);
 api.get({path: '/users/status/:status'}, core.verifytoken, get_users_by_status);
 api.get({path: '/users/all/absent'}, core.verifytoken, get_absent_users_v1);
 api.post({path: '/users/create'}, core.verifytoken, create_user_v1);
-api.post({path: '/users/edit'}, core.verifytoken, edit_user_v1);
+api.patch({path: '/users/edit'}, core.verifytoken, edit_user_v1);
 api.post({path: '/users/suspend-user'}, core.verifytoken, suspend_user_v1);
 api.post({path: '/users/unsuspend-user'}, core.verifytoken, unsuspend_user_v1);
 
