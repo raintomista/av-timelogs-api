@@ -17,7 +17,8 @@ module.exports = function(req, res, next){
             else{
                 res.send(200, {
                     code: vars.CODE_SUCCESS,
-                    msg: "No data fetched"
+                    msg: "No data fetched",
+                    data: result
                 });
             }
         }

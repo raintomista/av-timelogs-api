@@ -1,0 +1,559 @@
+[33mcommit fb0ebbc55ac194c54a69032c633234803289da32[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 11 14:32:19 2017 +0800
+
+    Fix generate access token
+
+[33mcommit 8e2351cd1570844beda16e5cd53e6c1a0deb891c[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 11 11:15:51 2017 +0800
+
+    Fix http method of edit user
+
+[33mcommit 18e43fd56d4b6e9baac72e60d57b70c4248e7218[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 11 11:13:21 2017 +0800
+
+    Fix http method of edit user
+
+[33mcommit 428b9c9946d528224e31092354fe3bc4e54c65d7[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 11 10:13:37 2017 +0800
+
+    Fix edit user
+
+[33mcommit f2e94c9bfa28dcf936c1cd1f36a68bec7e4ab9f1[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 10 18:45:56 2017 +0800
+
+    Edit User Error Handling
+
+[33mcommit ad31fa8cd483b561213bf4f26553b038a07a82a3[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 10 18:44:39 2017 +0800
+
+    Edit User Error Handling
+
+[33mcommit e6f1e44cc893b0a13ed96928eed2d2d97a55f05e[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 10 18:43:40 2017 +0800
+
+    Edit User Error Handling
+
+[33mcommit 84c222ca942ab43360978ec0d9d6a7a6c27aed3c[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 10 17:46:49 2017 +0800
+
+    Implement Edit User
+
+[33mcommit a07edc75b8ba92c47c2150ab537ec997cd84461e[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 10 11:42:06 2017 +0800
+
+    Minor changes in RDNS Lookup Implementation
+
+[33mcommit db706924d932d9b08da5c03eca68aad32ae7a7b5[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 10 11:35:52 2017 +0800
+
+    Implement reverse dns lookup
+
+[33mcommit 4024aee4a4783829f20b64b396d6b1458321ed62[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jul 5 18:28:49 2017 +0800
+
+    Enable backend uploading
+
+[33mcommit ca1d1cb2d583347708a6e1afdf10bb5c569f8c11[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 4 12:19:00 2017 +0800
+
+    Change noon mailer time
+
+[33mcommit 174faf73744de49c96e577a3e19802f69b48c560[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 4 02:55:01 2017 +0800
+
+    Implement CRON
+
+[33mcommit 350ad66d9f85f821b77b4fb86d076d93db48ad5b[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 4 02:52:13 2017 +0800
+
+    Implement CRON
+
+[33mcommit 1e55badaa3639605c0a57180d0d58f9137366f85[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jul 4 02:24:09 2017 +0800
+
+    Created api endpoints for mailer
+
+[33mcommit 6e168c61b49adba8c2e9a63f097a1a88f6eff4a0[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 3 23:31:18 2017 +0800
+
+    Sends user info as a response from view timelogs by date range
+
+[33mcommit 884c2c6b3401490eeacc79fe78598222ae2176b6[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jul 3 23:11:32 2017 +0800
+
+    Sends user info as a response
+
+[33mcommit ba0bcba73a7f7acb504180401944b5a66c62a7c4[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 14:55:55 2017 +0800
+
+    Add isAdmin property to user model
+
+[33mcommit 2f3b4e28d93eec8bbe11e41ad768209ae7826e44[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 14:54:53 2017 +0800
+
+    Add isAdmin property to user model
+
+[33mcommit 716e415d81760d8d8ca00498300571e30c159330[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 14:52:16 2017 +0800
+
+    Add isAdmin property to logged user
+
+[33mcommit 3ceb382a0cfcb12db0dee2b77393f2f504f1c3a2[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 11:30:33 2017 +0800
+
+    Fix bugs
+
+[33mcommit dd9cf42a13cb4a98bf1c4e0d4dbeb451f011e2cd[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 11:29:00 2017 +0800
+
+    Fix bugs
+
+[33mcommit 290d535aa4cab0d064f943e57aecf0b0f8c047e7[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 11:11:24 2017 +0800
+
+    Implement get network status
+
+[33mcommit 403e62b4320cd89293bdad9715b706f1f72d2415[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 10:55:32 2017 +0800
+
+    Implement time in/time out alerts
+
+[33mcommit d49739fe284c095051fa7bdf84744e4445e35b2a[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 19:05:35 2017 +0800
+
+    Fix time for heroku
+
+[33mcommit a6565e8cbc4cb15db2b416e5e21fa99c20c64471[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 19:03:23 2017 +0800
+
+    Fix time for heroku
+
+[33mcommit 0ba139b74b78395052a47765949ef2e5a565e866[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 30 19:01:07 2017 +0800
+
+    Implement 7PM Mailer
+
+[33mcommit fd395a5d10093c731a73c92aa069bda8fc55d611[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Thu Jun 29 16:14:02 2017 +0800
+
+    Implement 12 NN Mailer
+
+[33mcommit 7f2fc3bf517a1427afb1291a08fc769e07289eee[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 18:08:18 2017 +0800
+
+    Implement View Timelogs By Date Range
+
+[33mcommit 3d8b22dfec7bd9431f4fd87f4fd2769f807e5f73[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 16:42:07 2017 +0800
+
+    Fix time out bugs
+
+[33mcommit f758f217698e8c7b38489473dc264b5f8cba85bc[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 16:39:54 2017 +0800
+
+    Fix time out bugs
+
+[33mcommit 47b0e6ed3f959173fffe9e0b1f2ada34ab436351[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 16:36:22 2017 +0800
+
+    Fix time out bugs
+
+[33mcommit 486e475f97914fc8c1e56d9db43d711371add752[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 15:33:09 2017 +0800
+
+    Implement Suspend/Unsuspend User API
+
+[33mcommit dc713b29c3a731343ac77169c1ee1d5838a44c4a[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 15:06:04 2017 +0800
+
+    Bug fix for create user
+
+[33mcommit 4c0706fb8ddf847d171c43b3a6d39246091d8a5f[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 14:02:48 2017 +0800
+
+    Remove cloudinary upload
+
+[33mcommit 5ea24852269475d76840cbf424172c6ac6e2ca52[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 27 10:44:38 2017 +0800
+
+    Update cloudinary credentials
+
+[33mcommit d2f1870a2f5da289a9c62e4587bcf7fc99b9e012[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 26 21:22:54 2017 +0800
+
+    Bug fix
+
+[33mcommit 3a5fe5c71f0575b5b528a7f6808c76ee3c15d63c[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 26 20:54:11 2017 +0800
+
+    Bug fix
+
+[33mcommit 7222c5fb3a02287c113325dbafa7f0bf9efff18b[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 26 20:49:13 2017 +0800
+
+    Create user bug fix
+
+[33mcommit 29d94f4b7bf823026a3de3b7bc07e25fb5446d4c[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 26 02:04:58 2017 +0800
+
+    Sort timelogs of user by time in
+
+[33mcommit 9efc3d28ee9e2076571f47f5842b52b37c48a257[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 26 01:45:20 2017 +0800
+
+    Fix View All Timelogs By User bugs
+
+[33mcommit c47e769f30173ac30b59a749d0198ad8ef8fb1f5[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 26 00:59:45 2017 +0800
+
+    View All Users with Recent Timelog
+
+[33mcommit e4b5fd4792ec69708963c342e4ad0a21f8ef1136[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 19:32:11 2017 +0800
+
+    Time in bug fixes
+
+[33mcommit 3a78dd6643d145c61ee86850b60b2592577968f9[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 19:30:23 2017 +0800
+
+    Time in bug fixes
+
+[33mcommit f3e063c74ec4c0dfa95df6d1a1e0c279f4e132de[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 19:27:22 2017 +0800
+
+    Time in bug fixes
+
+[33mcommit 88630764374238aca2fa059851a1093122f2cc14[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 19:19:58 2017 +0800
+
+    Time in bug fixes
+
+[33mcommit 1cd425d162ef1f42cf8dd6c600dc503abfe54b4f[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 19:06:13 2017 +0800
+
+    Time in bug fixes
+
+[33mcommit eb611b63361c1a8c7fa66d462693c62c4e7740d2[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 17:40:13 2017 +0800
+
+    Added debug to time in
+
+[33mcommit 1a3414a7b8434487b35573e9bfe6b5aadc25a658[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 17:34:35 2017 +0800
+
+    Added debug to time in
+
+[33mcommit d3ed8f2f161285c5d79f70378c05b62f08270a0f[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 17:30:04 2017 +0800
+
+    Added recent timelog to user schema
+
+[33mcommit c993cfdffe2f32830ac54a5cf344b2d3b311ca5c[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 17:00:36 2017 +0800
+
+    Fix time in bugs
+
+[33mcommit 1dc084b461a34ae430b153db160d63998ef88529[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 25 15:53:52 2017 +0800
+
+    Debug
+
+[33mcommit abc8a72224ba19548323bf380115d7027cda8ada[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Wed Jun 21 18:20:07 2017 +0800
+
+    Deploy
+
+[33mcommit 061b8f9ae62409d9ea50ed18dd6a5476679bfff5[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jun 21 14:38:16 2017 +0800
+
+    Minor changes in Time In, Time Out and View all timelogs
+
+[33mcommit 9fea42a8b6f8bfacd8b47fed6fa3af7158fa87f7[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jun 21 14:03:56 2017 +0800
+
+    Minor schema changes for DBRef-like behavior
+
+[33mcommit efeda969f894f82ed7be5773222b1baf4513b55e[m
+Merge: a315dc8 4c2e239
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jun 21 12:07:36 2017 +0800
+
+    Merge branch 'master' of https://git.heroku.com/av-timelogs-api
+
+[33mcommit a315dc843cae5f9c4125c5099f2de377fb542b44[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jun 21 12:07:22 2017 +0800
+
+    Refactor time out api
+
+[33mcommit 53b8b885b020f09bca935202358d2c1672d2e53b[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jun 21 12:07:10 2017 +0800
+
+    Implement late time in detection
+
+[33mcommit d94f216a56d5fc27ac7591042469d2436e888ee0[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Wed Jun 21 12:05:20 2017 +0800
+
+    Update models
+
+[33mcommit 4c2e239771064997f0f14c1ddf1344b92c1f505f[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 18:14:55 2017 +0800
+
+    Deploy
+
+[33mcommit 472a195d6c29841bad28f57af18048af416fe72e[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 14:01:02 2017 +0800
+
+    Deploy changes
+
+[33mcommit 8b89dabaf48eb81720c224bd06b7f881f97eb9e7[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 12:08:58 2017 +0800
+
+    Deploy
+
+[33mcommit ced6fb6fc2d57ec219d414f21bb2b310e577bb35[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 12:05:55 2017 +0800
+
+    Deploy
+
+[33mcommit 1cbd5d9fe83acf3ea63d04ed097177830afdd4c0[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 12:00:57 2017 +0800
+
+    Deploy
+
+[33mcommit c95d8ec58a17dbea7780c8d7fd513f113ae83509[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 11:26:09 2017 +0800
+
+    deploy
+
+[33mcommit 78a42f9391723540217053844792f331f0b36ee9[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 11:07:42 2017 +0800
+
+    deploy
+
+[33mcommit 28453782e3f4af346bda5abe39d7be8322febcc9[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 10:52:49 2017 +0800
+
+    Deploy
+
+[33mcommit c24e9fc7c422d147f0c3f2a1e3c27cea52e047ff[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Tue Jun 20 10:49:53 2017 +0800
+
+    deploy
+
+[33mcommit 90678f52d9f85122d35895c2578ebcca2868f333[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Tue Jun 20 09:42:06 2017 +0800
+
+    Update core services
+
+[33mcommit 2b8482bb0bbfc65ded01b4dccb62f9261f6f1a96[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 19 18:12:37 2017 +0800
+
+    Clean user.js model code
+
+[33mcommit 7ee4ba89c7de4a8a5a78fea99cc1d996e955b73b[m
+Merge: b56bac8 0c78361
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Mon Jun 19 18:00:10 2017 +0800
+
+    deploy
+
+[33mcommit b56bac8ccf1f3bd8d506fa2b5c6aac3437ec73d9[m
+Author: Pauline Reyes <Pauline Reyes>
+Date:   Mon Jun 19 17:52:42 2017 +0800
+
+    deploy
+
+[33mcommit 0c783610f5c8cf67305f663435dc07217b7a7d75[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 19 14:33:28 2017 +0800
+
+    Implement get user by username
+
+[33mcommit bfca75ec93fb1c4b88cffcd7feda061c01d2e1f4[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 19 12:41:42 2017 +0800
+
+    Update MONGODB_URI
+
+[33mcommit 62613ffb99ff4a122b479a6ac5fdedfa377d7393[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 19 12:41:14 2017 +0800
+
+    Implement get users by status
+
+[33mcommit 5a73eb42510c1f7141b11cd17b6416e2c9d0fc03[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 19 12:40:49 2017 +0800
+
+    Replaced User's timedIn attribute to status
+
+[33mcommit 5f9a544b277fa45415892a90d48f5b63d78e2886[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Mon Jun 19 12:31:15 2017 +0800
+
+    Implement get timelogs by user and by date
+
+[33mcommit 4f8da1aec51d42d81d4be3fd5dd030b3bc007a1c[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 18 02:37:58 2017 +0800
+
+    Fix error handling
+
+[33mcommit fe34b8e67bf3c3297ccbaa5cbca7727a02e0d254[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 18 02:25:07 2017 +0800
+
+    Handle time in/time out API multiple requests
+
+[33mcommit ec022597236faee8c5f399de02f5abe9c12fc4e0[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 18 10:32:30 2017 +0800
+
+    Update user schema
+
+[33mcommit e657cb470e2e9cab366f5b51627bb9ba69821578[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 18 10:27:11 2017 +0800
+
+    Compute total hours after time out
+
+[33mcommit 6291b0227c5ec1a4ef969b6f28db4e135f4e2245[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sun Jun 18 00:05:37 2017 +0800
+
+    Implement time out from latest timelog of user
+
+[33mcommit dd2c19b2adfaefea333a683219c13db837956946[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sat Jun 17 21:07:31 2017 +0800
+
+    Update MONGODB_URI
+
+[33mcommit c9ba1d3b5c3c62c6ad582f978f714aac7e521c92[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sat Jun 17 21:03:59 2017 +0800
+
+    Update MONGODB_URI
+
+[33mcommit 79db9df73af782685110b47b20db0601e0f64513[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Sat Jun 17 20:57:59 2017 +0800
+
+    Implement initial time in/time out api
+
+[33mcommit 3b456ff07b9e151e0603b0733af2c68b4c668ea3[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 18:10:06 2017 +0800
+
+    Comply with project conventions
+
+[33mcommit 4d749f518519753dfcfec0eaf5a5b23e1b1d7f93[m
+Author:  <r2mista@DESKTOP-Q5M5MOA.localdomain>
+Date:   Fri Jun 16 15:41:21 2017 +0800
+
+    Implement restify server
+
+[33mcommit 0883923b0d5822a3561c8aa478360e1b3808e9a8[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 14:15:02 2017 +0800
+
+    Update app listen port
+
+[33mcommit a38a219894e591e7fa38db0d60961b418d7d8ee6[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 14:12:18 2017 +0800
+
+    Update app listen port
+
+[33mcommit 18c54bc7bce06d4becca49521b1cc4b1ae7576e8[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 14:04:01 2017 +0800
+
+    API
+
+[33mcommit 00cc71120a384e3bf36e9f603c0314cc1d61409e[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 13:26:43 2017 +0800
+
+    update
+
+[33mcommit 94c372b9d5a712e890bae22db80c7874cca69521[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 13:21:59 2017 +0800
+
+    update mongo
+
+[33mcommit b34aaa5501f997f845e4254c7bd04836a7752039[m
+Author: Rain Tomista <rftomista@gmail.com>
+Date:   Fri Jun 16 12:55:49 2017 +0800
+
+    Initial commit
