@@ -38,7 +38,7 @@ module.exports = function (req, res, next) {
                         let update = { status: 1, _timelog: timelog._id }
                         User.update(query, update, function (err) {
                             if (!err) {
-                                sendgrid.emailTimeInOutAlert(user.name, 'timed in', time_in.format('HH:mm:ss A'));
+                                sendgrid.emailTimeInOutAlert(user.name, 'timed in', time_in.format('hh:mm:ss A'));
                                 res.send(200, {
                                     code: vars.CODE_SUCCESS,
                                     msg: vars.CODE_SUCCESS
