@@ -4,7 +4,7 @@ const User = require('../../../../../models/user');
 
 
 module.exports = function(req, res, next){
-    const query = {status: req.params.status} 
+    const query = {status: req.params.status, isSuspended: false} 
     User.find(query, function(err, result){
         if(!err){
             if(result.length > 0){
