@@ -9,10 +9,10 @@ var userSchema = mongoose.Schema({
     contactNumber: {type: String},
     totalHours: {type: String},
     status: {type: Number},
-    isSuspended: {type: Number},
+    isSuspended: {type: Boolean},
     imgUrl: {type: String},
     _timelog: { type: Schema.ObjectId, ref: 'Timelog'},
-    isAdmin: Boolean
+    isAdmin: {type: Boolean }
 });
 
 module.exports = mongoose.model('User', userSchema);
