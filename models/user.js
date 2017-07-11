@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
     password: {type: String, require: true},
     name: {type: String},
     email: {type: String, required: true},
-    contactNumber: {type: Number},
+    contactNumber: {type: String},
     totalHours: {type: String},
     status: {type: Number},
     imgUrl: {type: String},
