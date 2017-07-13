@@ -7,12 +7,14 @@ var userSchema = mongoose.Schema({
     name: {type: String},
     email: {type: String, required: true},
     contactNumber: {type: String},
-    totalHours: {type: String},
+    totalHours: {type: Number},
+    totalOffset: {type: Number},
     status: {type: Number},
-    isSuspended: {type: Boolean},
     imgUrl: {type: String},
-    _timelog: { type: Schema.ObjectId, ref: 'Timelog'},
-    isAdmin: {type: Boolean }
+    isAdmin: {type: Boolean },
+    isSuspended: {type: Boolean},        
+    _timelog: { type: Schema.ObjectId, ref: 'Timelog' },
+    _offset: {  type: Schema.ObjectId, ref: 'Offset' }
 });
 
 module.exports = mongoose.model('User', userSchema);

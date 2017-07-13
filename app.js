@@ -13,7 +13,7 @@ core.initCORS(api, restify);
 
 
 api.listen(process.env.PORT || 8080, function(){
-	console.log("Server started at " + process.env.PORT);
+	console.log("Server started at Port " + (process.env.PORT || 8080) );
 });
 
 module.exports.api = api;
