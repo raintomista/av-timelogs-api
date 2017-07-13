@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 var offset = mongoose.Schema({
     _user: { type: Schema.ObjectId, ref: 'User'},
-    timeIn: Date,
-    timeOut: Date,
-    totalHrs: Number
+    timeIn: { type: Date },
+    timeOut: { type: Date },
+    totalHrs: { type: Number },
+    isValid: { type: Boolean, default: false},
+    remarks: { type: String, default: null }
 });
 
 module.exports = mongoose.model('Offset', offset);
