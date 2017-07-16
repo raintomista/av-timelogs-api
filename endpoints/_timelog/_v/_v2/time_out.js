@@ -20,7 +20,7 @@ module.exports = function (req, res, next) {
                 .then(response => {
 
                     // Check if the total hours for the day is less than max hours
-                    if(response[0].total < maxHours){
+                    if(response[0] && response[0].total < maxHours){
                         timeout(user);
                     }
                     else{
