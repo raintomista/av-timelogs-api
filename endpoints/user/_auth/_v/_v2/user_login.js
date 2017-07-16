@@ -50,17 +50,19 @@ module.exports = function(req,res,next){
         core.generateAppAccessToken({user: JSON.stringify(user)}, 
             function(err,token){
                 let data = {
-                    username: user.username,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    email: user.email,
-                    contactNumber: user.contactNumber,
-                    imgUrl: user.imgUrl,
-                    totalHours: user.totalHours,
-                    totalOffset: user.totalOffset,
-                    isAdmin: user.isAdmin,
-                    isSuspended: user.isSuspended,
-                    token: token  
+                    token: token,
+                    user: {
+                        username: user.username,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                        contactNumber: user.contactNumber,
+                        imgUrl: user.imgUrl,
+                        totalHours: user.totalHours,
+                        totalOffset: user.totalOffset,
+                        isAdmin: user.isAdmin,
+                        isSuspended: user.isSuspended
+                    }
                 }
 
                 if(!err){
