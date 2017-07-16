@@ -9,7 +9,7 @@ const User = require('../../../../models/user');
 
 module.exports = function(req, res, next){
     User.find(
-        {isAdmin: false}, {username: 1, name: 1, imgUrl: 1, isSuspended: 1, _timelog: 1})
+        {isAdmin: false}, {username: 1, firstName: 1, lastName: 1, imgUrl: 1, isSuspended: 1, _timelog: 1})
         .populate('_timelog').exec()
         .then(results => {
             if(results.length > 0){
