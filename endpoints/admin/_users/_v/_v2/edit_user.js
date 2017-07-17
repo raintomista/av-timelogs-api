@@ -12,7 +12,8 @@ module.exports = function(req,res,next){
         if(!err){
             cloudinary.upload(req.params.data.imgUrl, function(response){
                 if(response.secure_url){
-                    user.imgUrl = response.secure_url;
+                    let s = response.secure_url;
+                    user.imgUrl = `${s.substring(0, 52)}w_200,h_200,c_fill,g_auto/${s.substring(52, s.length)}`;
                 }
                 if(req.params.data.newUsername){
                     user.username = req.params.data.newUsername;
