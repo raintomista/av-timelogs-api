@@ -65,7 +65,7 @@ module.exports = function(req,res,next){
                     lastName: user.lastName,
                     email: user.email,
                     contactNumber : user.contactNumber,
-                    imgUrl: `${s.substring(0, 52)}w_200,h_200,c_fill,g_auto/${s.substring(52, s.length)}`,
+                    imgUrl: `${s.substring(0, 52)}w_400,h_400,c_fill,g_auto/${s.substring(52, s.length)}`,
                     isAdmin: user.isAdmin
                 });
                 
