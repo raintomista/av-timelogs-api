@@ -61,7 +61,8 @@ module.exports = function(req,res,next){
                         totalHours: user.totalHours,
                         totalOffset: user.totalOffset,
                         isAdmin: user.isAdmin,
-                        isSuspended: user.isSuspended
+                        isSuspended: user.isSuspended,
+                        status: user.status
                     }
                 }
 
