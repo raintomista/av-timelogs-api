@@ -4,7 +4,10 @@ const User = require('../../../../../models/user');
 
 
 module.exports = function(req, res, next){
-    User.find({}, function(err, result){
+    User.find()
+        .populate('_timelog')
+        .populate('_offset')
+        .exec(function(err, result){
         if(!err){
             if(result.length > 0){
                 res.send(200, {

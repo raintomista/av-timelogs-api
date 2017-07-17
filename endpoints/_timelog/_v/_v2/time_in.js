@@ -29,7 +29,6 @@ module.exports = function (req, res, next) {
 			if(user.status === 0){
 				checkIfOffsetHour(req.params.data.username)
 					.then(offsetHour => {
-						console.log(offsetHour);
 						if(!offsetHour){ //Normal Time In
 							saveTimelog(user._id);
 						}
@@ -93,7 +92,8 @@ module.exports = function (req, res, next) {
 			.then(timelog => {
 				let query = { username: req.params.data.username};
 				let update = { status: 1, _timelog: timelog._id, _offset: null };
-				updateUserStatus(query, update, timelog.lateHrs, 'Sucessfully timed in');
+				let message = late_hours > 0 ? 'Successfully timed in. You are late.' : 'Successfuly timed in. You are on-time.';
+				updateUserStatus(query, update, timelog.lateHrs, message);
 			})
 			.catch(err => {
 				res.send(500, {

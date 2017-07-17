@@ -23,7 +23,7 @@ module.exports = function (req, res, next) {
                     if(response[0] && response[0].total < maxHours){
                         timeout(user);
                     }
-                    else{
+                    else if(response[0] && response[0].total >= maxHours){
                         timeoutOffset(user);
                     }
                 })
@@ -43,6 +43,7 @@ module.exports = function (req, res, next) {
         if(timelog && timelog.timeOut === null){ //Timeout from Regular Time In
             let timeDiff = moment(timestamp).diff(timelog.timeIn, 'seconds');
 
+            timeDiff = 45211;
             //CASE 2: Timelog Difference is beyond Max Hours (More than 9 hrs per day)
             if(timeDiff >= maxHours){
 
