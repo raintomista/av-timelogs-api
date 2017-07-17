@@ -57,6 +57,7 @@ module.exports = function(req,res,next){
         // Uploads Picture First
         uploadPicture(user.imgUrl)
             .then(result => {
+                let s = result.secure_url;
                 let newUser = new User({
                     username: user.username,
                     password: bcrypt.hashSync(user.password, salt),
@@ -64,7 +65,7 @@ module.exports = function(req,res,next){
                     lastName: user.lastName,
                     email: user.email,
                     contactNumber : user.contactNumber,
-                    imgUrl: result.secure_url,
+                    imgUrl: `${s.substring(0, 52)}w_200,h_200,c_fill,g_auto/${s.substring(52, s.length)}`,
                     isAdmin: user.isAdmin
                 });
                 
