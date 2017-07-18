@@ -12,8 +12,8 @@ core.mongoConnect();
 core.initCORS(api, restify);
 
 
-api.listen(process.env.PORT || 8081, function(){
-	console.log("Server started at Port " + (process.env.PORT || 8081) );
+api.listen(process.env.PORT || 8082, function(){
+	console.log("Server started at Port " + (process.env.PORT || 8082) );
 });
 
 module.exports.api = api;
