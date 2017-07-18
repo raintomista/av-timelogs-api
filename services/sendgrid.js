@@ -1,4 +1,4 @@
-const SENDGRID_API_KEY = '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';
+const SENDGRID_API_KEY = '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';
 const BASE_URL = 'https://av-time-logs.herokuapp.com';
 
 let helper = require('sendgrid').mail;
@@ -6,7 +6,7 @@ let helper = require('sendgrid').mail;
 module.exports.personalizeEmailByRecipient = function(recipients){
     let bccRecipients = [];
     let mail = new helper.Mail();
-    let TEMPLATE_ID = '3df627f7-485c-4e71-85fd-12b5189d760b';
+    let TEMPLATE_ID = '8601ccb1-759f-4bfc-aff9-d509412b5e8e';
 
     // Set Email Sender 
     let fromEmail = new helper.Email('no-reply@app-venture.co');
@@ -15,13 +15,13 @@ module.exports.personalizeEmailByRecipient = function(recipients){
     // Set Email BCC Recipients
     recipients.forEach((recipient) =>  bccRecipients.push(new helper.Email(recipient.email, recipient.name)));
     
-    // Personalize Each BCC Recipients
+    // Personalize Each BCC Recipients  
         recipients.forEach(function(recipient){
         let personalization = new helper.Personalization();
         personalization.setSubject('Forgot to Time In?')
         personalization.addTo(fromEmail); //Set Email Receiver
         personalization.addBcc(recipient); //Set Email BCC Recipients
-        personalization.addSubstitution(new helper.Substitution("%user%", recipient.name));
+        personalization.addSubstitution(new helper.Substitution("%user%", `${recipient.firstName}`));
         personalization.addSubstitution(new helper.Substitution("%button_url%", `${BASE_URL}`));
         mail.addPersonalization(personalization);
     });
@@ -79,7 +79,7 @@ module.exports.emailWithList = function(absentees){
 module.exports.emailTimeInOutAlert = function(name, verb, time){
     let bccRecipients = [];
     let mail = new helper.Mail();
-    let TEMPLATE_ID = '78bf13b6-a414-435f-b761-8427f3a00dbb';
+    let TEMPLATE_ID = 'fbe450f5-4299-4f5a-a52b-0d96a17849ef';
 
     // Set Email Sender 
     let fromEmail = new helper.Email('no-reply@app-venture.co');
@@ -92,7 +92,7 @@ module.exports.emailTimeInOutAlert = function(name, verb, time){
     personalization.addSubstitution(new helper.Substitution("%name%", name));
     personalization.addSubstitution(new helper.Substitution("%verb%", verb));
     personalization.addSubstitution(new helper.Substitution("%time%", time));    
-    personalization.addSubstitution(new helper.Substitution("%button_url%", `${BASE_URL}`));
+    personalization.addSubstitution(new helper.Substitution("%button_url%", `${BASE_URL}/admin/timelogs`));
     mail.addPersonalization(personalization);
 
 

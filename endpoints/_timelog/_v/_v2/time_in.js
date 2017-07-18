@@ -110,7 +110,7 @@ module.exports = function (req, res, next) {
 
 				//COMMENT: ENABLE THIS AFTER IMPLEMENTING OFFSET
 				//TO DO: Convert Hours to UTC 8
-				// sendgrid.emailTimeInOutAlert(user.name, 'timed in', time_in.utcOffset("+08:00").format('hh:mm:ss A'));
+				sendgrid.emailTimeInOutAlert(`${user.firstName} ${user.lastName}` , 'timed in', time_in.utcOffset("+08:00").format('hh:mm:ss A'));
 				res.send(200, {
 					code: vars.CODE_SUCCESS,
 					message: message,

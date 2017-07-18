@@ -107,6 +107,7 @@ module.exports = function (req, res, next) {
                 //Store changes to database
                 Promise.all([saveTimelog(timelog), updateUser(user)])
                     .then(response => {
+                        sendgrid.emailTimeInOutAlert(`${user.firstName} ${user.lastName}` , 'timed out', timestamp.utcOffset("+08:00").format('hh:mm:ss A'));
                         res.send(200, {
                             code: vars.CODE_SUCCESS,
                             message: 'Successfully timed out.',
