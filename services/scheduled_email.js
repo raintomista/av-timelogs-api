@@ -15,8 +15,8 @@ cron.scheduleJob({
 });
 
 cron.scheduleJob({
-    hour: 0,
-    minute: 10,
+    hour: 19,
+    minute: 00,
     dayOfWeek: [1, 2, 3, 4, 5]
 }, function () {
     console.log('7PM END OF THE DAY MAILER');
@@ -37,8 +37,12 @@ timeInAlert = function () {
     });
 }
 
-endOfTheDayAlert = function () {
-    User.find()
+function endOfTheDayAlert() {
+    const start = moment().startOf('day').add(9, 'hours');
+    const end = moment().startOf('day').add(19, 'hours');
+    User.find({
+            isAdmin: false
+        })
         .populate('_timelog')
         .exec(function (err, results) {
             if (!err) {
@@ -51,7 +55,38 @@ endOfTheDayAlert = function () {
                     }
                 });
 
-                sendgrid.emailWithList(absentUsers);
+                absentUsers.sort((a, b) => {
+                    return compareStrings(a.lastName, b.lastName);
+                })
+
+
+                console.log(absentUsers);
+                sendAlerts(absentUsers)
             }
+        });
+}
+
+function compareStrings(a, b) {
+    // Assuming you want case-insensitive comparison
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+    return (a < b) ? -1 : (a > b) ? 1 : 0;
+}
+
+
+function sendAlerts(absentUsers) {
+    User.find({
+            isAdmin: true
+        }, {
+            email: 1,
+            firstName: 1,
+            lastName: 1
+        })
+        .then(recipients => {
+            sendgrid.emailWithList(absentUsers, recipients);
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
         });
 }

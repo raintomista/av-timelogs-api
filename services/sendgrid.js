@@ -34,39 +34,44 @@ module.exports.personalizeEmailByRecipient = function (recipients) {
 }
 
 
-module.exports.emailWithList = function (absentees) {
+module.exports.emailWithList = function (absentees, recipients) {
     let list = '';
-    let msg = 'Here are the list of users who have not timed in today.'
+    let ccRecipients = [];
+    
+    let msg = 'Here is a list of user/s who have not timed in today.'
     let mail = new helper.Mail();
-    let TEMPLATE_ID = '56a32316-85e8-4ee4-8f4f-e75d852ab001';
+    let TEMPLATE_ID = 'ba3a3bb7-473f-477a-bcc0-43079a8871cc';
 
     // Set Email Sender 
     let fromEmail = new helper.Email('no-reply@app-venture.co');
     mail.setFrom(fromEmail);
 
-    // Set Email BCC Recipients
-    // absentees.forEach((absentee) =>  {
-    //     list = `${list}${absentee.name}\n` 
-    // });
-
 
     if (absentees.length < 1) {
         msg = 'All of the users are present today.';
         list = ''
-    } else {
+    } 
+    else {
+        list = '<ul>\n';
         absentees.forEach((absentee) => {
-            list = list + `<ul><li><img src="${absentee.imgUrl}"><span class="absentee-name">${absentee.name}</span></li></ul>` + '\n';
+            list = list + `\t<li><img src="${absentee.imgUrl}"><span class="absentee-name">${absentee.lastName}, ${absentee.firstName}</span></li>` + '\n';
         });
+        list = list + '</ul>';
     }
 
-    // Personalize Each BCC Recipients
-    let personalization = new helper.Personalization();
-    personalization.setSubject('Absent Users')
-    personalization.addTo(new helper.Email('rstomista@up.edu.ph', 'Admin')); //Set Email Receiver
-    personalization.addSubstitution(new helper.Substitution("%msg%", msg));
-    personalization.addSubstitution(new helper.Substitution("%list%", list));
-    personalization.addSubstitution(new helper.Substitution("%button_url%", `${BASE_URL}/time-in`));
-    mail.addPersonalization(personalization);
+    // Set Email CC Recipients
+    recipients.forEach((recipient) => ccRecipients.push(new helper.Email(recipient.email, `${recipient.firstName} ${recipient.lastName}`)));
+
+    // Personalize Each BCC Recipients  
+    ccRecipients.forEach(function (recipient) {
+        let personalization = new helper.Personalization();
+        personalization.setSubject('List of Absent Users')
+        personalization.addTo(recipient); //Set Email CC Recipients
+        personalization.addSubstitution(new helper.Substitution("%msg%", msg));
+        personalization.addSubstitution(new helper.Substitution("%list%", list));
+        personalization.addSubstitution(new helper.Substitution("%button_url%", `${BASE_URL}/admin/timelogs`));
+        mail.addPersonalization(personalization);
+    });
 
     //Set Email Template
     mail.setTemplateId(TEMPLATE_ID);
@@ -75,7 +80,7 @@ module.exports.emailWithList = function (absentees) {
     sendEmail(mail);
 }
 
-module.exports.emailTimeInOutAlert = function(name, verb, time, recipients) {
+module.exports.emailTimeInOutAlert = function (name, verb, time, recipients) {
     let ccRecipients = [];
     let mail = new helper.Mail();
     let TEMPLATE_ID = 'fbe450f5-4299-4f5a-a52b-0d96a17849ef';
@@ -88,7 +93,7 @@ module.exports.emailTimeInOutAlert = function(name, verb, time, recipients) {
     recipients.forEach((recipient) => ccRecipients.push(new helper.Email(recipient.email, `${recipient.firstName} ${recipient.lastName}`)));
 
     // Personalize Each BCC Recipients  
-    recipients.forEach(function (recipient) {
+    ccRecipients.forEach(function (recipient) {
         let personalization = new helper.Personalization();
         personalization.setSubject(`${name} has ${verb} at ${time}`)
         personalization.addTo(recipient); //Set Email CC Recipients
