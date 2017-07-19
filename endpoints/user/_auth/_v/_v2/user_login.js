@@ -9,16 +9,17 @@ const User = require('../../../../../models/user');
 const saltRounds = 10;
 var salt = bcrypt.genSaltSync(saltRounds);
 
-module.exports = function(req,res,next){
+module.exports = function (req, res, next) {
     let username = req.params.data.username;
     let password = req.params.data.password;
 
-    User.findOne({username: username})
+    User.findOne({
+            username: username
+        })
         .then(user => {
-            if(user){
+            if (user) {
                 authenticateUser(user);
-            }
-            else{
+            } else {
                 res.send(401, {
                     code: vars.CODE_AUTH_ERROR,
                     message: 'Log in failed: Username does not exist.'
@@ -33,21 +34,22 @@ module.exports = function(req,res,next){
             });
         })
 
-    function authenticateUser(user){
-        if(!bcrypt.compareSync(password, user.password)){
+    function authenticateUser(user) {
+        if (!bcrypt.compareSync(password, user.password)) {
             res.send(401, {
                 code: vars.CODE_AUTH_ERROR,
                 message: 'Log in failed: Password incorrect'
             });
-        }
-        else{
+        } else {
             generateToken(user);
         }
     }
 
-    function generateToken(user){
-        core.generateAppAccessToken({user: JSON.stringify(user)}, 
-            function(err,token){
+    function generateToken(user) {
+        core.generateAppAccessToken({
+                user: JSON.stringify(user)
+            },
+            function (err, token) {
                 let data = {
                     token: token,
                     user: {
@@ -65,14 +67,13 @@ module.exports = function(req,res,next){
                     }
                 }
 
-                if(!err){
+                if (!err) {
                     res.send(200, {
                         code: vars.CODE_SUCCESS,
                         message: 'Successfully logged in',
                         data: data
                     });
-                }
-                else{
+                } else {
                     res.send(401, {
                         code: vars.CODE_AUTH_ERROR,
                         message: 'Failed to generate access token.'

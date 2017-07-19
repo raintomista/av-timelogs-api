@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
+
 const vars = require('../../../../vars');
+
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
 module.exports = function(req, res, next){
-    
-    //Search Username 
     User.findOne({username: req.params.username}, function(err, user){
         if(!err){
             Timelog.find({_user: user._id}, {password: -1}, {sort: { timeIn: 1}}, function(err, result){

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
+
 const vars = require('../../../../vars');
+
 const Timelog = require('../../../../models/timelog');
 
 module.exports = function(req, res, next){

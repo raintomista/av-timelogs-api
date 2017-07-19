@@ -10,7 +10,6 @@ const edit_user_v2 = require('./_v/_v2/edit_user');
 const suspend_user_v1 = require('./_v/_v1/suspend_user_v1');
 const unsuspend_user_v1 = require('./_v/_v1/unsuspend_user_v1');
 
-
 api.get({path: '/users/all'}, core.verifytoken, get_user_v1);
 api.get({path: '/users/:username'}, core.verifytoken, get_user_by_username);
 api.get({path: '/users/status/:status'}, core.verifytoken, get_users_by_status);

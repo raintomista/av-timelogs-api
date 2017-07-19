@@ -1,14 +1,14 @@
 const moment = require('moment');
-const vars = require('../../../../vars');
 const mongoose = require('mongoose');
-const Timelog = require('../../../../models/timelog');
-const User = require('../../../../models/user');
+
+const vars = require('../../../../vars');
 const sendgrid = require('../../../../services/sendgrid');
 
+const Timelog = require('../../../../models/timelog');
+const User = require('../../../../models/user');
 
 const office_start = moment().startOf('day').add(1, 'hours'); //UTC +8
 const late = moment().startOf('day').add(2, 'hours').add(1, 'minutes'); //UTC +8
-
 
 module.exports = function (req, res, next) {
     const time_in = moment().utcOffset('+08:00');

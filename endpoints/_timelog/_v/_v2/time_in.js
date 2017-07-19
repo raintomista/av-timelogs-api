@@ -13,7 +13,6 @@ const User = require('../../../../models/user');
 const office_start = moment().startOf('day').add(9, 'hours').utc();
 const late = moment().startOf('day').add(10, 'hours').add(1, 'minutes').utc();
 
-
 module.exports = function (req, res, next) {
 	const time_in = moment().utc();
 	let late_hours = null;
@@ -22,7 +21,6 @@ module.exports = function (req, res, next) {
 	if (!time_in.isBetween(office_start, late)) {
 		late_hours = moment(time_in).diff(office_start, 'seconds');
 	}
-
 
 	findUser(req.params.data.username)
 		.then(user => {
@@ -123,14 +121,14 @@ module.exports = function (req, res, next) {
 		User.findOneAndUpdate(query, update)
 			.then(user => {
 				let message = '';
-				switch(msgCode){
+				switch (msgCode) {
 					case 1:
 						message = 'Successfully timed in. You are late.';
 						break;
-					case 2: 
+					case 2:
 						message = 'Successfuly timed in. You are on-time.';
 						break;
-					case 3: 
+					case 3:
 						message = 'Successfully timed in within Offset Hours';
 						break;
 				}
@@ -213,7 +211,7 @@ module.exports = function (req, res, next) {
 			})
 			.then(recipients => {
 				let verb = '';
-				switch(msgCode){
+				switch (msgCode) {
 					case 1:
 						verb = 'timed in late';
 						break;

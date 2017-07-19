@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 const vars = require('../../../../../vars');
 const Network = require('../../../../../models/network');
 
-module.exports = function(req, res, next){
-    Network.findOne({ip_address: req.params.ip}, function(err, result){
-        if(!err){
+module.exports = function (req, res, next) {
+    Network.findOne({
+        ip_address: req.params.ip
+    }, function (err, result) {
+        if (!err) {
             res.send(200, {
                 code: vars.CODE_SUCCESS,
                 msg: "Successfully fetched network",

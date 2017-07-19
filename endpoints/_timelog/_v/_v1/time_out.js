@@ -1,8 +1,10 @@
 const moment = require('moment');
+
 const vars = require('../../../../vars');
+const sendgrid = require('../../../../services/sendgrid');
+
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
-const sendgrid = require('../../../../services/sendgrid');
 
 
 function getHours(milliseconds){

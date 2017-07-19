@@ -37,7 +37,7 @@ module.exports.personalizeEmailByRecipient = function (recipients) {
 module.exports.emailWithList = function (absentees, recipients) {
     let list = '';
     let ccRecipients = [];
-    
+
     let msg = 'Here is a list of user/s who have not timed in today.'
     let mail = new helper.Mail();
     let TEMPLATE_ID = 'ba3a3bb7-473f-477a-bcc0-43079a8871cc';
@@ -50,8 +50,7 @@ module.exports.emailWithList = function (absentees, recipients) {
     if (absentees.length < 1) {
         msg = 'All of the users are present today.';
         list = ''
-    } 
-    else {
+    } else {
         list = '<ul>\n';
         absentees.forEach((absentee) => {
             list = list + `\t<li><img src="${absentee.imgUrl}"><span class="absentee-name">${absentee.lastName}, ${absentee.firstName}</span></li>` + '\n';

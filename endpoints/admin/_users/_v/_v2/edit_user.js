@@ -7,18 +7,20 @@ var bcrypt = require('bcrypt');
 const saltRounds = 10;
 var salt = bcrypt.genSaltSync(saltRounds);
 
-module.exports = function(req,res,next){
-    User.findOne({username: req.params.data.username}, function(err, user){
-        if(!err){
-            cloudinary.upload(req.params.data.imgUrl, function(response){
-                if(response.secure_url){
+module.exports = function (req, res, next) {
+    User.findOne({
+        username: req.params.data.username
+    }, function (err, user) {
+        if (!err) {
+            cloudinary.upload(req.params.data.imgUrl, function (response) {
+                if (response.secure_url) {
                     let s = response.secure_url;
                     user.imgUrl = `${s.substring(0, 52)}w_400,h_400,c_fill,g_auto/${s.substring(52, s.length)}`;
                 }
-                if(req.params.data.newUsername){
+                if (req.params.data.newUsername) {
                     user.username = req.params.data.newUsername;
                 }
-                if(req.params.data.password){
+                if (req.params.data.password) {
                     user.password = bcrypt.hashSync(req.params.data.password, salt);
                 }
 
@@ -27,33 +29,29 @@ module.exports = function(req,res,next){
                 user.email = req.params.data.email;
                 user.contactNumber = req.params.data.contactNumber;
 
-                user.save(function(err, result){
-                    if(!err){
+                user.save(function (err, result) {
+                    if (!err) {
                         res.send(200, {
-                            code: vars.CODE_SUCCESS, 
+                            code: vars.CODE_SUCCESS,
                             message: 'Successfully updated account.',
                             data: result
                         });
-                    }
-                    else{
+                    } else {
                         res.send(500, {
-                            code: vars.CODE_SERVER_ERROR, 
-                            message: vars.CODE_SERVER_ERROR, 
+                            code: vars.CODE_SERVER_ERROR,
+                            message: vars.CODE_SERVER_ERROR,
                             err: err
-                        });   
+                        });
                     }
                 });
 
             });
-        }
-        else{
+        } else {
             res.send(500, {
-                code: vars.CODE_SERVER_ERROR, 
-                message: vars.CODE_SERVER_ERROR, 
+                code: vars.CODE_SERVER_ERROR,
+                message: vars.CODE_SERVER_ERROR,
                 err: err
-            });    
+            });
         }
     });
 }
-
-

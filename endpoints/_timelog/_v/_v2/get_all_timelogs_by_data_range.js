@@ -4,11 +4,10 @@ const moment = require('moment');
 const vars = require('../../../../vars');
 const resource = require('../../../../services/resource-service');
 
-
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
-module.exports = function(req, res, next){
+module.exports = function (req, res, next) {
     const start_of_day = moment(req.params.startDate, 'MMDDYYYY').startOf('day').toDate();
     const end_of_day = moment(req.params.endDate, 'MMDDYYYY').endOf('day').toDate();
 
@@ -18,7 +17,7 @@ module.exports = function(req, res, next){
                 .then(response => {
                     let timelogs = response[0];
 
-                    if(timelogs.length > 0){
+                    if (timelogs.length > 0) {
                         let totalHrs = response[1][0].totalHrs;
                         let totalLateHrs = response[1][0].totalLateHrs;
                         res.send(200, {
@@ -31,8 +30,7 @@ module.exports = function(req, res, next){
                                 totalLateHrs: resource.secondsToDuration(totalLateHrs)
                             }
                         });
-                    }
-                    else{
+                    } else {
                         res.send(200, {
                             code: vars.CODE_SUCCESS,
                             message: 'No timelogs fetched',
@@ -55,8 +53,10 @@ module.exports = function(req, res, next){
         })
 
 
-    function getUserInfo(username){
-        return User.findOne({username: username})
+    function getUserInfo(username) {
+        return User.findOne({
+                username: username
+            })
             .then(user => {
                 return user;
             })
@@ -65,33 +65,53 @@ module.exports = function(req, res, next){
             });
     }
 
-    function getAllTimelogs(userId){
-        return Timelog.find({ _user: userId, timeIn: {$gte : new Date(start_of_day), $lt: new Date(end_of_day)} }, {}, {sort: { timeIn: 1 }})
+    function getAllTimelogs(userId) {
+        return Timelog.find({
+                _user: userId,
+                timeIn: {
+                    $gte: new Date(start_of_day),
+                    $lt: new Date(end_of_day)
+                }
+            }, {}, {
+                sort: {
+                    timeIn: 1
+                }
+            })
             .then(timelogs => {
-               return timelogs;
+                return timelogs;
             })
             .catch(err => {
                 throw err;
             });
     }
 
-    function getTotal(userId){
-		return Timelog.aggregate([
-				{ $match: { _user: userId, timeIn: {$gte : new Date(start_of_day), $lt: new Date(end_of_day)} }}, 
-				{
-					$group: {
-						_id: "$_user",
-						totalHrs: { $sum: "$totalHrs" },
-						totalLateHrs: { $sum: "$lateHrs" }
-					}
-				}
-			])
-			.then(results => {		
-				return results;				
-			})
-			.catch(err => {
-				throw err;
-			})
-	}
+    function getTotal(userId) {
+        return Timelog.aggregate([{
+                    $match: {
+                        _user: userId,
+                        timeIn: {
+                            $gte: new Date(start_of_day),
+                            $lt: new Date(end_of_day)
+                        }
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$_user",
+                        totalHrs: {
+                            $sum: "$totalHrs"
+                        },
+                        totalLateHrs: {
+                            $sum: "$lateHrs"
+                        }
+                    }
+                }
+            ])
+            .then(results => {
+                return results;
+            })
+            .catch(err => {
+                throw err;
+            })
+    }
 }
-

@@ -7,19 +7,24 @@ const resource = require('../../../../services/resource-service');
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
-module.exports = function(req, res, next){
-    User.find(
-        {}, {username: 1, firstName: 1, lastName: 1, imgUrl: 1, isSuspended: 1, _timelog: 1})
+module.exports = function (req, res, next) {
+    User.find({}, {
+            username: 1,
+            firstName: 1,
+            lastName: 1,
+            imgUrl: 1,
+            isSuspended: 1,
+            _timelog: 1
+        })
         .populate('_timelog').exec()
         .then(results => {
-            if(results.length > 0){
+            if (results.length > 0) {
                 res.send(200, {
                     code: vars.CODE_SUCCESS,
                     message: 'Successfully fetched timelogs',
                     data: resource.formatDurationData(results)
                 });
-            }
-            else{
+            } else {
                 res.send(200, {
                     code: vars.CODE_SUCCESS,
                     message: 'No timelogs fetched',
@@ -35,5 +40,3 @@ module.exports = function(req, res, next){
             })
         });
 }
-
-

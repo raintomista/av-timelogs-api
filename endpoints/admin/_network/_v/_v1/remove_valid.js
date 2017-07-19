@@ -2,14 +2,18 @@ const mongoose = require('mongoose');
 const vars = require('../../../../../vars');
 const Network = require('../../../../../models/network');
 
-module.exports = function(req,res,next){
+module.exports = function (req, res, next) {
 
-    var data = {status: 0};
+    var data = {
+        status: 0
+    };
 
-    Network.findOneAndUpdate({_id: req.params._id,}, data, function(err,result){
-       if(!err){
-           if(result){
-                res.send(200,{
+    Network.findOneAndUpdate({
+        _id: req.params._id,
+    }, data, function (err, result) {
+        if (!err) {
+            if (result) {
+                res.send(200, {
                     code: vars.CODE_SUCCESS,
                     msg: "Network removed from valid list"
                 });
@@ -19,11 +23,11 @@ module.exports = function(req,res,next){
                     msg: "Network not found"
                 });
             }
-       } else {
-           res.send(500, {
-               code: "Error",
-               msg: vars.MSG_SERVER_ERROR
-           });
-       }     
+        } else {
+            res.send(500, {
+                code: "Error",
+                msg: vars.MSG_SERVER_ERROR
+            });
+        }
     });
 }

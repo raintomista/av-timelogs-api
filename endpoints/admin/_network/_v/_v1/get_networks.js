@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const vars = require('../../../../../vars');
 const Network = require('../../../../../models/network');
 
-module.exports = function(req, res, next){
-    Network.find({}, function(err, result){
-        if(!err){
-            if(result.length > 0){
+module.exports = function (req, res, next) {
+    Network.find({}, function (err, result) {
+        if (!err) {
+            if (result.length > 0) {
                 res.send(200, {
                     code: vars.CODE_SUCCESS,
                     msg: "Successfully fetched",

@@ -1,9 +1,9 @@
 const moment = require('moment');
 const mongoose = require('mongoose');
-const User = require('../models/user');
 const sendgrid = require('./sendgrid');
 const cron = require('node-schedule');
 
+const User = require('../models/user');
 
 cron.scheduleJob({
     hour: 12,

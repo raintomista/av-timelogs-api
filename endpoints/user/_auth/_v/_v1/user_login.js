@@ -7,16 +7,21 @@ var bcrypt = require('bcrypt');
 const saltRounds = 10;
 var salt = bcrypt.genSaltSync(saltRounds);
 
-module.exports = function(req,res,next){
+module.exports = function (req, res, next) {
     var username = req.params.data.username;
     var password = req.params.data.password;
 
-    User.findOne({username: username}, function(err, user){
-        if(user){
-            if(bcrypt.compareSync(password, user.get('password'))){
-                core.generateAppAccessToken({user: JSON.stringify(user)}, function(err,token){
-                    if(!err){
-                        res.send(200,{code: vars.CODE_SUCCESS, 
+    User.findOne({
+        username: username
+    }, function (err, user) {
+        if (user) {
+            if (bcrypt.compareSync(password, user.get('password'))) {
+                core.generateAppAccessToken({
+                    user: JSON.stringify(user)
+                }, function (err, token) {
+                    if (!err) {
+                        res.send(200, {
+                            code: vars.CODE_SUCCESS,
                             message: "Welcome " + user.first_name + "!",
                             data: {
                                 username: user.username,
@@ -30,17 +35,25 @@ module.exports = function(req,res,next){
                                 isAdmin: user.isAdmin,
                                 isSuspended: user.isSuspended
                             }
-                        }); 
+                        });
+                    } else {
+                        res.send(401, {
+                            code: "Failed",
+                            message: "Failed to generate access code"
+                        });
                     }
-                    else{
-                        res.send(401,{code: "Failed", message: "Failed to generate access code"});
-                    }
-                });           
+                });
             } else {
-                res.send(401,{code: "Failed", message: "Log in failed: Password incorrect"});
+                res.send(401, {
+                    code: "Failed",
+                    message: "Log in failed: Password incorrect"
+                });
             }
         } else {
-            res.send(401, {code: "Failed", message: "Log in failed: Username does not exist"});
+            res.send(401, {
+                code: "Failed",
+                message: "Log in failed: Username does not exist"
+            });
         }
     })
 };
