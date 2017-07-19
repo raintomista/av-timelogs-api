@@ -6,8 +6,6 @@ const vars = require('../../../../vars');
 const Timelog = require('../../../../models/timelog');
 const User = require('../../../../models/user');
 
-
-
 module.exports = function (req, res, next) {
     User.find()
         .populate('_timelog')
