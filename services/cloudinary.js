@@ -1,9 +1,9 @@
 const cloudinary = require('cloudinary');
 
 cloudinary.config({
-    cloud_name: 'av-timelogs',
-    api_key: '238536451155192',
-    api_secret: 'FZlNEoTPH1G3qBZa5VpB3j5pLEA'
+    cloud_name: 'hp00kmapx',
+    api_key: '113995928662643',
+    api_secret: '_0klt4IJRz2u7XyJbiC8Xx1wYqM'
 });
 
 exports.upload = function (imgPath, callback) {
