@@ -26,7 +26,6 @@ module.exports = function(req,res,next){
             }
         })
         .catch(err => {
-            console.log(err);
             res.send(500, {
                 code: vars.CODE_SERVER_ERROR,
                 message: vars.CODE_SERVER_ERROR,

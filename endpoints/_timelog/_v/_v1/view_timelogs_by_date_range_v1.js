@@ -9,8 +9,6 @@ module.exports = function(req, res, next){
     const start_of_day = moment(req.params.startDate, 'MMDDYYYY').startOf('day').toDate();
     const end_of_day = moment(req.params.endDate, 'MMDDYYYY').add(1, 'days').toDate();
 
-    console.log(start_of_day);
-    console.log(end_of_day);
     
     const query = {
         

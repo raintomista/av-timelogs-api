@@ -68,8 +68,6 @@ module.exports = function (req, res, next) {
 
                         Promise.all([saveTimelog(timelog), updateUser(user)])
                             .then(response => {
-                                console.log(totalOffset);
-                                console.log(maxHours);
                                 sendAlerts(user, timestamp.utcOffset("+08:00").format('hh:mm:ss A'), 'timed out beyond working hours');
                                 res.send(200, {
                                     code: vars.CODE_SUCCESS,
@@ -252,7 +250,6 @@ module.exports = function (req, res, next) {
                 sendgrid.emailTimeInOutAlert(`${user.firstName} ${user.lastName}`, verb, time, recipients);
             })
             .catch(err => {
-                console.log(err);
                 throw err;
             });
     }

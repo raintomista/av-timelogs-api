@@ -10,7 +10,6 @@ var salt = bcrypt.genSaltSync(saltRounds);
 module.exports = function(req,res,next){
     cloudinary.upload(req.params.data.imgUrl, function(result){
 
-    console.log(result);
      var data = {
                 username: req.params.data.username,
                 password: bcrypt.hashSync(req.params.data.password,salt),
@@ -27,15 +26,12 @@ module.exports = function(req,res,next){
     
         //Username and Email Availability
     User.find({$or: [{username: req.params.data.username},{email: req.params.data.email}]}).exec(function(err,results){
-        console.log(err);
-        console.log(results);
         
         if(!err){
             if(results.length > 0){
                 res.send(400,{code: vars.CODE_BAD_REQUEST , message:"Username/Email already exists"});
             } else {
                 User.create(data, function(test){
-                    console.log(test);
                     res.send(200, {
                         code: vars.CODE_SUCCESS, 
                         message:"User has been created",

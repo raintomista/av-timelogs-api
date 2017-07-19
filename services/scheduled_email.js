@@ -59,8 +59,6 @@ function endOfTheDayAlert() {
                     return compareStrings(a.lastName, b.lastName);
                 })
 
-
-                console.log(absentUsers);
                 sendAlerts(absentUsers)
             }
         });
@@ -86,7 +84,6 @@ function sendAlerts(absentUsers) {
             sendgrid.emailWithList(absentUsers, recipients);
         })
         .catch(err => {
-            console.log(err);
             throw err;
         });
 }

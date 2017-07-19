@@ -158,7 +158,7 @@ module.exports = function (req, res, next) {
 				.then(response => {
 					if (response.length > 0) {
 						let total = response[0].total;
-						console.log(moment.duration(total, 'seconds').asHours());
+
 						if (moment.duration(total, 'seconds').asHours() >= 9) {
 							return true;
 						}
@@ -228,7 +228,6 @@ module.exports = function (req, res, next) {
 				sendgrid.emailTimeInOutAlert(`${user.firstName} ${user.lastName}`, verb, time, recipients);
 			})
 			.catch(err => {
-				console.log(err);
 				throw err;
 			});
 	}

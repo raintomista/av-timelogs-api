@@ -14,12 +14,7 @@ module.exports = function (req, res, next) {
     const time_in = moment().utcOffset('+08:00');
     const late_hours = moment(time_in).isBetween(office_start, late) ? null : moment.utc(moment(time_in).diff(late)).format("HH:mm:ss").toString();
     
-    console.log(office_start);
-    console.log(late);
-    console.log(time_in);
-    console.log(late_hours);
     User.findOne({username: req.params.username}, function(err, user){
-        console.log(user);
         if(!err){
             let newObject = {
                 _user: user._id,

@@ -9,7 +9,6 @@ module.exports = function(req, res, next){
     const end = moment().startOf('day').add(17, 'hours').utcOffset('08:00');
 
 
-    console.log(start);
     User.find()
         .populate('_timelog')
         .exec(function(err, results){

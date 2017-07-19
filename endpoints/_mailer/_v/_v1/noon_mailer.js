@@ -6,8 +6,6 @@ const sendgrid = require('../../../../services/sendgrid');
 
 module.exports = function(req, res, next){
     User.find({status: 0}, {email: 1, name: 1}, function(err, results){
-            console.log(err);
-        
         if(!err){
             sendgrid.personalizeEmailByRecipient(results); 
             res.send(200, {
