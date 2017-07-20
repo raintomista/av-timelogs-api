@@ -18,7 +18,7 @@ module.exports = function (req, res, next) {
 	let late_hours = null;
 
 	//Check if Time In is Late
-	if (!time_in.isBetween(office_start, late)) {
+	if (!time_in.isBetween(office_start, late) && time_in.isAfter(office_start)) {
 		late_hours = moment(time_in).diff(office_start, 'seconds');
 	}
 
