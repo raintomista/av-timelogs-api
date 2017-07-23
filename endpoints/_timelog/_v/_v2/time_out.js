@@ -14,16 +14,20 @@ module.exports = function (req, res, next) {
     //Main 
     findUserAndLatestTimelog(req.params.data.username)
         .then(user => {
-
             // Check Total Hours for the Day
             getTodaysHours(user._id)
                 .then(response => {
-
                     // Check if the total hours for the day is less than max hours
                     if (response[0] && response[0].total < maxHours) {
                         timeout(user);
                     } else if (response[0] && response[0].total >= maxHours) {
                         timeoutOffset(user);
+                    } else { //Handle Timeouts at Midnight or when the last timeIn is from the previous day
+                        if (user._timelog && !user._timelog.timeOut) {
+                            timeout(user);
+                        } else if (user._offset && !user._offset.timeOut) {
+                            timeoutOffset(user);
+                        }
                     }
                 })
                 .catch(err => {
